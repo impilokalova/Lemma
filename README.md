@@ -14,3 +14,7 @@ npm run test
 Cloudflare Pages: build command `npm run build`, output `dist`. The `public/_redirects` file enables SPA deep links. Deploy previews from this branch; do not merge or publish production before review.
 
 This milestone contains responsive navigation, route skeletons, a typed content registry and Ultraviolet design tokens. The 3D hero, real contact form handler, client imagery, pricing and Canva assets are intentionally not included yet.
+
+## Preview workflow
+
+The first Cloudflare production attempt on `main` cannot build because `main` has no website yet. Preview this feature branch before merging. A successful preview must be verified in Cloudflare deployments.
