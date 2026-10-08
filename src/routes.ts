@@ -7,7 +7,7 @@ export const nav: NavItem[] = [
   {label:'About',href:'/about'},
   {label:'Contact',href:'/contact'}
 ];
-export type Sample = {slug:string;title:string;type:'Poster'|'Flyer'|'Website';category:string;status:'Concept sample';canvaUrl?:string;previewUrl?:string};
+export type Sample = {slug:string;title:string;type:'Poster'|'Flyer'|'Website'|'Landing Page';category:string;status:'Concept sample';canvaUrl?:string;previewUrl?:string};
 // Only publish samples once rights, artwork and share URLs have been confirmed.
 export const samples: Sample[] = [];
 export const serviceDetails: Record<string,{title:string;description:string}> = {
