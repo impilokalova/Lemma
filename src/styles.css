@@ -61,3 +61,11 @@
  .galaxy-hero-copy h1{font-size:32px}
 }
 @media(prefers-reduced-motion:reduce){.galaxy-brand span,.galaxy-stars{animation:none}}
+
+
+/* Reference-match: LEMMA sits directly above the globe horizon on every viewport. */
+.galaxy-brand{top:calc(var(--planet-horizon, 66%) - 5px);height:auto;min-height:0;transform:translate(-50%,-100%);align-items:flex-end;white-space:nowrap;z-index:3}
+.galaxy-brand span{animation:lemma-close-float 5s ease-in-out infinite;animation-delay:calc(var(--letter-index) * -.18s)}
+@keyframes lemma-close-float{0%,100%{margin-bottom:0}50%{margin-bottom:4px}}
+@media(max-width:767px){.galaxy-brand{top:calc(var(--planet-horizon, 67%) - 4px);height:auto}}
+@media(prefers-reduced-motion:reduce){.galaxy-brand span{animation:none}}
