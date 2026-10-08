@@ -75,6 +75,10 @@ export function PlanetHero(){
    planet.scale.setScalar(scale);
    // Place the globe below the viewport so only its top hemisphere is framed.
    planet.position.set(0,-visibleHeight*.48-radius*scale*.28,0);
+   // Tie the wordmark to the globe's actual projected horizon, not viewport percentages.
+   const projected=new THREE.Vector3(0,planet.position.y+radius*scale,0).project(camera);
+   const horizonPx=(1-projected.y)*h/2;
+   node.parentElement?.style.setProperty('--planet-horizon',`${horizonPx}px`);
   };
   const ro=new ResizeObserver(resize);ro.observe(node);resize();
   const animate=()=>{
