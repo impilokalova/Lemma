@@ -1,3 +1,4 @@
+import {getHeroLayout} from './hero/breakpoints';
 import {useEffect,useRef} from 'react';
 import * as THREE from 'three';
 import {Link} from 'react-router-dom';
@@ -70,15 +71,17 @@ export function PlanetHero(){
    renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
    const visibleHeight=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*camera.position.z;
    const visibleWidth=visibleHeight*camera.aspect;
-   const desiredDiameter=w<700?visibleWidth*1.45:visibleWidth*.88;
+   const layout=getHeroLayout(w);
+   const desiredDiameter=visibleWidth*layout.globeWidth;
    const scale=Math.max(.55,Math.min(1.38,desiredDiameter/(radius*2)));
    planet.scale.setScalar(scale);
    // Place the globe below the viewport so only its top hemisphere is framed.
-   planet.position.set(0,-visibleHeight*.48-radius*scale*.28,0);
+   planet.position.set(0,(.5-layout.horizonRatio)*visibleHeight-radius*scale,0);
    // Tie the wordmark to the globe's actual projected horizon, not viewport percentages.
    const projected=new THREE.Vector3(0,planet.position.y+radius*scale,0).project(camera);
    const horizonPx=(1-projected.y)*h/2;
    node.parentElement?.style.setProperty('--planet-horizon',`${horizonPx}px`);
+   node.parentElement?.style.setProperty('--wordmark-gap',`${layout.wordmarkGap}px`);
   };
   const ro=new ResizeObserver(resize);ro.observe(node);resize();
   const animate=()=>{
