@@ -24,7 +24,7 @@ export function PlanetHero(){
   let renderer:THREE.WebGLRenderer;
   try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});}
   catch{node.classList.add('planet-fallback');return;}
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,window.innerWidth<600?1.25:1.7));
   renderer.setClearColor(0x000000,0);
   renderer.domElement.setAttribute('aria-hidden','true');
   node.appendChild(renderer.domElement);
@@ -33,10 +33,11 @@ export function PlanetHero(){
   camera.position.set(0,0,12);
   const planet=new THREE.Group();scene.add(planet);
   const radius=4.4;
-  const sphereGeo=new THREE.SphereGeometry(radius,96,64);
+  const mobileAtStart=node.clientWidth<600;
+  const sphereGeo=new THREE.SphereGeometry(radius,mobileAtStart?48:80,mobileAtStart?32:56);
   const sphereMat=new THREE.MeshPhongMaterial({color:0x09051b,emissive:0x110728,emissiveIntensity:0.42,shininess:100,specular:0x452185});
   planet.add(new THREE.Mesh(sphereGeo,sphereMat));
-  const atmosphereGeo=new THREE.SphereGeometry(radius+0.025,96,64);
+  const atmosphereGeo=new THREE.SphereGeometry(radius+0.025,mobileAtStart?48:80,mobileAtStart?32:56);
   const atmosphereMat=new THREE.ShaderMaterial({
    transparent:true,depthWrite:false,
    uniforms:{glow:{value:new THREE.Color('#9a64ff')}},
@@ -67,6 +68,7 @@ export function PlanetHero(){
   const clock=new THREE.Clock();
   const resize=()=>{
    const w=node.clientWidth,h=node.clientHeight;
+   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,w<600?1.25:1.7));
    if(!w||!h)return;
    renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
    const visibleHeight=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*camera.position.z;
