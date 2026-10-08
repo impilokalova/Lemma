@@ -99,9 +99,6 @@ export function PlanetHero(){
  return <section className="galaxy-hero">
   <div className="galaxy-sky" aria-hidden="true"><div className="galaxy-nebula galaxy-nebula-left"/><div className="galaxy-nebula galaxy-nebula-right"/><div className="galaxy-stars galaxy-stars-a"/><div className="galaxy-stars galaxy-stars-b"/></div>
   <div className="galaxy-earth" ref={mount} aria-hidden="true"/>
-  <div className="galaxy-brand" aria-label="LEMMA">
-   {'LEMMA'.split('').map((letter,i)=><span key={i} style={{'--letter-index':i} as React.CSSProperties}>{letter}</span>)}
-  </div>
   <div className="galaxy-hero-bottom container">
    <div className="galaxy-hero-copy"><p className="eyebrow">CREATIVE · WEB · SOCIAL</p><h1>Ideas shaped into <em>impact.</em></h1><p>Websites, design and social creative for businesses ready to stand out.</p><div className="hero-actions"><Link className="btn btn-primary" to="/work">Explore Our Work ↗</Link><Link className="btn btn-outline" to="/contact">Start a Project</Link></div></div>
   </div>
