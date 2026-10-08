@@ -69,3 +69,9 @@
 @keyframes lemma-close-float{0%,100%{margin-bottom:0}50%{margin-bottom:4px}}
 @media(max-width:767px){.galaxy-brand{top:calc(var(--planet-horizon, 67%) - 4px);height:auto}}
 @media(prefers-reduced-motion:reduce){.galaxy-brand span{animation:none}}
+
+/* Responsive hero anchor: matched to the geometry configuration for each breakpoint. */
+.galaxy-brand{top:calc(var(--planet-horizon, 58%) - var(--wordmark-gap, 5px))}
+@media(max-width:599px){.galaxy-brand{width:94%;gap:0}.galaxy-brand span{font-size:clamp(42px,12vw,74px)}}
+@media(min-width:600px) and (max-width:1023px){.galaxy-brand{width:86%}.galaxy-brand span{font-size:clamp(65px,9vw,104px)}}
+@media(min-width:1024px){.galaxy-brand{width:78%}.galaxy-brand span{font-size:clamp(95px,8vw,135px)}}
