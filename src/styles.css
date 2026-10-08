@@ -28,3 +28,36 @@
  .planet-scroll-cue{bottom:24px}
 }
 @media(prefers-reduced-motion:reduce){.planet-scroll-scene{height:auto;min-height:620px}.planet-sticky{position:relative;top:0;height:calc(100svh - 68px)}.planet-scroll-cue{display:none}}
+
+
+/* Galaxy half-earth hero: independent floating wordmark above a true 3D sphere. */
+.galaxy-hero{height:min(930px,calc(100svh - 76px));min-height:650px;position:relative;overflow:hidden;background:#0b031b;color:#f4eafb;isolation:isolate}
+.galaxy-sky{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 70%,#301065 0%,#180632 48%,#080218 100%);overflow:hidden}
+.galaxy-nebula{position:absolute;width:65%;height:90%;opacity:.8;filter:blur(28px);mix-blend-mode:screen}
+.galaxy-nebula-left{left:-20%;top:-15%;transform:rotate(-32deg);background:radial-gradient(ellipse,#8628ec55 0%,#4e149c55 25%,#230c6400 70%)}
+.galaxy-nebula-right{right:-18%;top:-22%;background:radial-gradient(ellipse,#b457ff77 0%,#591db766 24%,#21084a00 67%)}
+.galaxy-stars{position:absolute;inset:-20%;background-repeat:repeat;pointer-events:none}
+.galaxy-stars-a{background-image:radial-gradient(1px 1px at 22px 18px,#fff 95%,transparent),radial-gradient(1px 1px at 117px 89px,#c68fff 95%,transparent),radial-gradient(2px 2px at 189px 133px,#bda4ff 95%,transparent),radial-gradient(1px 1px at 51px 164px,#fff 95%,transparent);background-size:233px 181px;opacity:.85;animation:galaxy-drift 110s linear infinite}
+.galaxy-stars-b{background-image:radial-gradient(1px 1px at 75px 50px,#eee0ff 95%,transparent),radial-gradient(2px 2px at 270px 120px,#a871ff 95%,transparent),radial-gradient(1px 1px at 167px 209px,#fff 95%,transparent);background-size:337px 263px;opacity:.68;animation:galaxy-drift 160s linear infinite reverse}
+@keyframes galaxy-drift{to{transform:translate3d(3%,2%,0)}}
+.galaxy-earth{position:absolute;inset:0;z-index:1;pointer-events:none}
+.galaxy-earth canvas{width:100%;height:100%;display:block}
+.galaxy-brand{position:absolute;z-index:3;left:50%;top:16%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:clamp(0px,.45vw,8px);width:min(90%,850px);height:190px;pointer-events:none;filter:drop-shadow(0 5px 12px #8544ffb0)}
+.galaxy-brand span{--letter-index:0;display:inline-block;font-family:Inter,Arial,sans-serif;font-weight:900;font-size:clamp(54px,9vw,135px);line-height:1;color:#f6f0ff;text-shadow:0 3px 0 #9772f3,0 9px 0 #5e3aab,0 13px 20px #b16cff80;transform:translateY(calc((2 - var(--letter-index)) * (2 - var(--letter-index)) * 11px)) rotate(calc((var(--letter-index) - 2) * 10deg));animation:lemma-float 5s ease-in-out infinite;animation-delay:calc(var(--letter-index) * -.18s)}
+@keyframes lemma-float{0%,100%{margin-top:0}50%{margin-top:-12px}}
+.galaxy-hero-bottom{position:absolute;z-index:4;left:0;right:0;bottom:28px;pointer-events:none}
+.galaxy-hero-copy{width:min(500px,100%);padding:20px 26px;background:linear-gradient(100deg,#140e20e8,#140e2088);border:1px solid #a56aff33;border-radius:20px;backdrop-filter:blur(10px);pointer-events:auto}
+.galaxy-hero-copy .eyebrow{color:#dab6ff;font-size:11px;letter-spacing:.2em}
+.galaxy-hero-copy h1{font-size:clamp(30px,3vw,45px);line-height:1.08;margin:10px 0}
+.galaxy-hero-copy p:not(.eyebrow){font-size:14px;color:#e3d4f2}
+.galaxy-hero-copy .hero-actions{margin-top:14px}
+.galaxy-hero-copy .btn{font-size:13px;padding:11px 14px}
+@media(max-width:767px){
+ .galaxy-hero{height:calc(100svh - 68px);min-height:580px}
+ .galaxy-brand{top:14%;height:100px;gap:1px}
+ .galaxy-brand span{font-size:clamp(43px,12vw,82px);text-shadow:0 2px 0 #9772f3,0 5px 0 #5e3aab,0 8px 16px #b16cff80;transform:translateY(calc((2 - var(--letter-index)) * (2 - var(--letter-index)) * 6px)) rotate(calc((var(--letter-index) - 2) * 9deg))}
+ .galaxy-hero-bottom{bottom:18px}
+ .galaxy-hero-copy{width:100%;padding:16px 18px}
+ .galaxy-hero-copy h1{font-size:32px}
+}
+@media(prefers-reduced-motion:reduce){.galaxy-brand span,.galaxy-stars{animation:none}}
