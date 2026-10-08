@@ -99,3 +99,23 @@
  .galaxy-hero-copy .hero-actions{display:flex;flex-wrap:wrap;gap:10px}
  .galaxy-hero-copy .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center}
 }
+
+
+/* Compact hero: give the service and portfolio sections room above the fold. */
+@media(min-width:1024px){
+ .galaxy-hero{height:clamp(520px,75svh,720px);min-height:520px}
+ .galaxy-hero-bottom{bottom:24px}
+}
+@media(min-width:600px) and (max-width:1023px){
+ .galaxy-hero{height:clamp(440px,70svh,610px);min-height:440px}
+ .galaxy-hero-bottom{bottom:16px}
+}
+@media(max-width:599px){
+ .galaxy-hero{height:auto;min-height:0}
+ .galaxy-earth{height:clamp(310px,48svh,440px)}
+ .galaxy-hero-bottom{margin-top:-24px;padding:0 16px 18px}
+ .galaxy-hero-copy{padding:16px 18px;border-radius:18px}
+ .galaxy-hero-copy h1{font-size:clamp(27px,7vw,34px);margin:8px 0}
+ .galaxy-hero-copy p:not(.eyebrow){font-size:13px;line-height:1.5}
+ .galaxy-hero-copy .hero-actions{margin-top:12px}
+}
