@@ -119,3 +119,29 @@
  .galaxy-hero-copy p:not(.eyebrow){font-size:13px;line-height:1.5}
  .galaxy-hero-copy .hero-actions{margin-top:12px}
 }
+
+
+/* Figma desktop editorial hero. Small screens retain the existing responsive hero. */
+.lemma-editorial-hero{display:none}
+@media(min-width:1024px){
+ body:has(.lemma-editorial-hero) .site-header{display:none}
+ .galaxy-hero{display:none}
+ .lemma-editorial-hero{display:block;position:relative;isolation:isolate;overflow:hidden;height:clamp(590px,56.25vw,810px);min-height:590px;background:#08060d;color:#f4eafb;font-family:Inter,Arial,sans-serif}
+ .lemma-editorial-art{position:absolute;inset:0;z-index:-1;background:#08060d url('/lemma-orbital-desktop.svg') center center/cover no-repeat;pointer-events:none}
+ .lemma-editorial-logo{position:absolute;left:3.8%;top:5%;font-weight:800;font-size:clamp(24px,2.5vw,36px);letter-spacing:-.055em;color:#f4eafb;text-decoration:none}
+ .lemma-editorial-logo span{color:#b16cff}
+ .lemma-editorial-services{position:absolute;left:3.8%;top:27%;width:215px;display:flex;flex-direction:column}
+ .lemma-editorial-services a{font-size:clamp(11px,1vw,13px);letter-spacing:.025em;padding:10px 0;border-bottom:1px solid #63427880;color:#dab6ff;text-decoration:none}
+ .lemma-editorial-services a:hover,.lemma-editorial-midline a:hover{color:#e185ff}
+ .lemma-editorial-midline{position:absolute;left:3.8%;right:3.8%;top:60%;padding-bottom:17px;border-bottom:1px solid #63427899;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:12px;letter-spacing:.025em;color:#b16cff}
+ .lemma-editorial-midline nav{display:flex;gap:clamp(16px,2.8vw,44px)}
+ .lemma-editorial-midline a{color:#f4eafb;text-decoration:none;font-size:12px}
+ .lemma-editorial-footer{position:absolute;left:3.8%;right:3.8%;bottom:6.5%;display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+ .lemma-editorial-footer p{font-size:clamp(12px,1.05vw,16px);line-height:1.55;color:#d1c2dc;margin:0}
+ .lemma-editorial-footer .lemma-editorial-location{color:#dab6ff;margin-bottom:clamp(20px,3vw,48px);font-size:12px;letter-spacing:.035em}
+ .lemma-editorial-footer h1{font-size:clamp(30px,3vw,46px);line-height:1.08;margin:0;max-width:360px;font-weight:800;letter-spacing:-.035em}
+}
+@media(min-width:1024px) and (max-width:1199px){
+ .lemma-editorial-services{top:24%}
+ .lemma-editorial-footer{bottom:5%}
+}
