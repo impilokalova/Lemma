@@ -100,6 +100,7 @@ export function PlanetHero(){
  return <>
   <section className="lemma-editorial-hero" aria-labelledby="lemma-editorial-heading">
    <div className="lemma-editorial-art" aria-hidden="true"/>
+   <Link className="lemma-editorial-logo" to="/" aria-label="Lemma Studio home">LEMMA<span>.</span></Link>
    <div className="lemma-editorial-services" aria-label="Our services">
     <Link to="/services/creative">BRAND STRATEGY</Link>
     <Link to="/services/creative">VISUAL IDENTITY</Link>
