@@ -21,6 +21,7 @@ export function PlanetHero(){
   const node=mount.current;
   if(!node)return;
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(window.matchMedia('(min-width: 1024px)').matches)return;
   let renderer:THREE.WebGLRenderer;
   try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});}
   catch{node.classList.add('planet-fallback');return;}
@@ -96,11 +97,29 @@ export function PlanetHero(){
   planet.rotation.y=-.3;animate();
   return()=>{disposed=true;cancelAnimationFrame(raf);observer.disconnect();ro.disconnect();sphereGeo.dispose();sphereMat.dispose();atmosphereGeo.dispose();atmosphereMat.dispose();outlineMaterial.dispose();halosMaterial.dispose();lines.forEach(g=>g.dispose());renderer.dispose();renderer.domElement.remove();};
  },[]);
- return <section className="galaxy-hero">
+ return <>
+  <section className="lemma-editorial-hero" aria-labelledby="lemma-editorial-heading">
+   <div className="lemma-editorial-art" aria-hidden="true"/>
+   <div className="lemma-editorial-services" aria-label="Our services">
+    <Link to="/services/creative">BRAND STRATEGY</Link>
+    <Link to="/services/creative">VISUAL IDENTITY</Link>
+    <Link to="/services/web">DIGITAL EXPERIENCE</Link>
+    <Link to="/services/web">WEB DEVELOPMENT</Link>
+   </div>
+   <div className="lemma-editorial-midline">
+    <span>LEMMA STUDIO / SELECTED WORK</span>
+    <nav aria-label="Hero navigation"><Link to="/about">ABOUT</Link><Link to="/services">SERVICES</Link><Link to="/work">PROJECTS</Link><Link to="/contact">CONTACT</Link></nav>
+   </div>
+   <div className="lemma-editorial-footer">
+    <div><p className="lemma-editorial-location">INDEPENDENT CREATIVE STUDIO&nbsp; / &nbsp;CAPE TOWN · WORLDWIDE</p><p>Thoughtful identities, digital experiences and content<br/>for ambitious brands ready to stand apart.</p></div>
+    <h1 id="lemma-editorial-heading">IDEAS SHAPED<br/>INTO IMPACT.</h1>
+   </div>
+  </section>
+  return <section className="galaxy-hero">
   <div className="galaxy-sky" aria-hidden="true"><div className="galaxy-nebula galaxy-nebula-left"/><div className="galaxy-nebula galaxy-nebula-right"/><div className="galaxy-stars galaxy-stars-a"/><div className="galaxy-stars galaxy-stars-b"/></div>
   <div className="galaxy-earth" ref={mount} aria-hidden="true"/>
   <div className="galaxy-hero-bottom container">
    <div className="galaxy-hero-copy"><p className="eyebrow">CREATIVE · WEB · SOCIAL</p><h1>Ideas shaped into <em>impact.</em></h1><p>Websites, design and social creative for businesses ready to stand out.</p><div className="hero-actions"><Link className="btn btn-primary" to="/work">Explore Our Work ↗</Link><Link className="btn btn-outline" to="/contact">Start a Project</Link></div></div>
   </div>
- </section>;
+ </section></>;
 }
