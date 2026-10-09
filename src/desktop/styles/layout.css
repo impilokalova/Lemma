@@ -1,1 +1,12 @@
 @media(min-width:1024px){.galaxy-hero.mobile-hero,.galaxy-hero.tablet-hero{display:none}.lemma-editorial-hero{display:block}}
+
+/* Desktop artwork: uploaded asset replaces the earlier generated SVG. */
+@media (min-width:1024px){
+ .lemma-editorial-art{
+  background-color:#08060d;
+  background-image:url('/desktop/assets/Neon%20Digital%20Atom%20Orbital%20Network.png');
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+ }
+}
