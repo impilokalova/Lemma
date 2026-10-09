@@ -116,7 +116,7 @@ export function PlanetHero(){
     <h1 id="lemma-editorial-heading">IDEAS SHAPED<br/>INTO IMPACT.</h1>
    </div>
   </section>
-  return <section className="galaxy-hero">
+  <section className="galaxy-hero">
   <div className="galaxy-sky" aria-hidden="true"><div className="galaxy-nebula galaxy-nebula-left"/><div className="galaxy-nebula galaxy-nebula-right"/><div className="galaxy-stars galaxy-stars-a"/><div className="galaxy-stars galaxy-stars-b"/></div>
   <div className="galaxy-earth" ref={mount} aria-hidden="true"/>
   <div className="galaxy-hero-bottom container">
