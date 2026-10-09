@@ -1,0 +1,4 @@
+import {Link} from 'react-router-dom';
+import {Card} from '../../shared/components/Card';
+import {Intro} from '../../shared/components/Intro';
+export function Work(){return <><Intro eyebrow="OUR WORK" title="Explore what Lemma can create." description="Discover concept projects, adaptable web templates and creative samples. Concepts are clearly labelled, never passed off as client commissions."/><div className="section container card-grid"><Card title="Case studies" description="A curated selection of concept work and verified client projects when available." href="/work/projects" tag="Portfolio"/><Card title="Templates & creative samples" description="Landing-page samples, business websites, Canva posters and flyer designs." href="/work/templates" tag="Browse"/><Card title="Live website demos" description="Interactive demonstrations of adaptable website concepts." href="/work/demos" tag="Explore"/></div></>}
