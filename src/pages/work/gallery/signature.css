@@ -1,0 +1,37 @@
+/* Lemma Signature Collection — editorial portfolio layout inspired by the supplied desktop reference. */
+.signature-showcase{background:#f6f5f1;color:#171519;min-height:100vh;padding:0 0 64px}
+.signature-intro{border-bottom:1px solid #c8c5c0;padding:48px max(24px,calc((100% - 1120px)/2)) 38px;text-align:center}
+.signature-overline{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#756b79}
+.signature-intro h1{font-size:clamp(40px,5.5vw,84px);font-weight:500;letter-spacing:-.065em;line-height:1;margin:22px 0}
+.signature-intro>p:not(.signature-overline){max-width:550px;margin:0 auto 18px;line-height:1.6;font-size:15px;color:#544f54}
+.signature-intro>span,.signature-count{font-size:11px;letter-spacing:.1em;color:#716b70}
+.signature-collection{width:min(1120px,calc(100% - 48px));margin:0 auto;padding:60px 0 48px;border-bottom:1px solid #c8c5c0}
+.signature-collection-top{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:26px}
+.signature-collection-top h2{font-size:clamp(32px,4vw,56px);font-weight:500;letter-spacing:-.055em;margin:8px 0}
+.signature-collection-description{margin:0;color:#6b646c;font-size:14px}
+.signature-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.signature-card{min-width:0}
+.signature-card-image{display:block;overflow:hidden;border:1px solid #b8b4b0;padding:8px;background:#ebe9e5}
+.signature-card-image img{display:block;width:100%;height:clamp(290px,36vw,490px);object-fit:contain;background:#e4e0db;user-select:none;-webkit-user-drag:none}
+.signature-card-image:focus-visible{outline:3px solid #b16cff}
+.signature-card-info{display:flex;align-items:start;justify-content:space-between;gap:12px;padding-top:12px}
+.signature-card-info h3{font-size:18px;font-weight:500;margin:0 0 4px}
+.signature-card-info p{font-size:12px;color:#69646a;margin:0}
+.signature-card-info a{font-size:12px;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
+.signature-controls{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:22px}
+.signature-dots{display:flex;gap:10px}
+.signature-dots button{height:11px;width:11px;border-radius:50%;border:1px solid #8e8791;background:transparent;padding:0;cursor:pointer}
+.signature-dots button.active{background:#b16cff;border-color:#b16cff}
+.signature-arrows{display:flex;gap:8px}
+.signature-arrows button{width:46px;height:46px;border:1px solid #a9a4a9;background:transparent;font-size:22px}
+.signature-arrows button:hover{background:#e6d5f7}
+.signature-outro{width:min(1120px,calc(100% - 48px));margin:30px auto 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12px;color:#716b70}
+.signature-outro a{font-size:14px;color:#382448}
+.signature-website-note{padding-top:60px;padding-bottom:70px}
+.signature-detail{background:#f6f5f1;min-height:85vh;padding:42px 0 90px;color:#171519}
+.signature-back{display:inline-block;margin-bottom:45px;font-size:13px}
+.signature-detail h1{font-size:clamp(40px,6vw,80px);font-weight:500;letter-spacing:-.05em;margin:12px 0}
+.signature-detail-art{margin:35px auto;max-width:850px;border:1px solid #b8b4b0;padding:10px;background:#e9e6e2}
+.signature-detail-art img{width:100%;height:auto;display:block}
+.signature-detail-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+@media(max-width:700px){.signature-intro{padding:32px 20px}.signature-collection{padding:38px 0}.signature-gallery{grid-template-columns:1fr}.signature-gallery .signature-card:nth-child(2){display:none}.signature-card-image img{height:auto;max-height:520px}.signature-collection-top{align-items:start}.signature-outro{display:block}.signature-outro a{display:inline-block;margin-top:12px}}

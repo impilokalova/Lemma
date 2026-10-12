@@ -6,3 +6,5 @@
 @import './tablet/styles/typography.css';
 @import './desktop/styles/typography.css';
 @import './hero/hero.css';
+
+@import './pages/work/gallery/signature.css';
