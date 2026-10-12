@@ -1,0 +1,16 @@
+# Static security and caching headers for Cloudflare Pages.
+# These limit certain browser attack surfaces, NOT screenshots or downloads.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/desktop/assets/*
+  Cache-Control: public, max-age=86400
+
+/mobile/assets/*
+  Cache-Control: public, max-age=86400
+
+/tablet/assets/*
+  Cache-Control: public, max-age=86400

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {links} from '../../shared/navigation/links';
 export function DesktopHero(){return <section className="lemma-editorial-hero" aria-labelledby="lemma-editorial-heading">
-   <div className="lemma-editorial-art" aria-hidden="true"/>
+   <div className="lemma-editorial-art" data-protected-artwork aria-hidden="true"/>
    <Link className="lemma-editorial-logo" to={links.home} aria-label="Lemma Studio home">LEMMA<span>.</span></Link>
    <div className="lemma-editorial-services" aria-label="Our services">
     <Link to={links.creative}>BRAND STRATEGY</Link>
