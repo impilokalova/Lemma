@@ -1,10 +1,11 @@
-import {Link} from 'react-router-dom';
+import {useEffect,useRef,useState} from 'react';
 const sneaker='/landing-pages/shared/assets/sneaker-drop.webp';
 const audio='/landing-pages/shared/assets/soundwave.webp';
 const home='/landing-pages/shared/assets/home-edit.webp';
 const afterDark='/landing-pages/shared/assets/after-dark.webp';
 const moth='/landing-pages/shared/assets/midnight-moth.webp';
 const spectral='/landing-pages/shared/assets/spectral-sweets.webp';
+
 
 export const seasonalDemos=[
  {slug:'sneaker-drop',group:'Black Friday',brand:'SOLE / SYSTEM',eyebrow:'THE BLACK FRIDAY EDIT',title:'MAKE YOUR NEXT MOVE.',subtitle:'A bold sneaker launch concept for the people who never stand still.',accent:'#C8FF43',background:'#0C0E0B',image:sneaker,cta:'EXPLORE THE DROP',tag:'FOOTWEAR',features:['Built for motion','Made to stand out','Everyday performance']},
@@ -15,4 +16,37 @@ export const seasonalDemos=[
  {slug:'spectral-sweets',group:'Halloween',brand:'SPECTRAL / SWEETS',eyebrow:'A HAUNTINGLY SWEET SEASON',title:'SWEETLY SUPERNATURAL.',subtitle:'Playful seasonal confectionery creative with a spooky twist.',accent:'#FF8B3D',background:'#190B19',image:spectral,cta:'DISCOVER THE TREATS',tag:'CONFECTIONERY',features:['Made for mischief','Treat your imagination','A little magic inside']}
 ] as const;
 
-export function SeasonalDemoIndex(){return <div className="seasonal-index"><div className="container"><p className="seasonal-kicker">LEMMA STUDIO / INTERACTIVE CONCEPTS</p><h1>Six worlds.<br/>One creative studio.</h1><p>Explore six original, fictional seasonal landing-page demonstrations. No products, discounts, tickets or promotions shown here are offered for sale.</p><div className="seasonal-index-grid">{seasonalDemos.map(d=><Link to={'/landing-pages/'+d.slug+'/'} className="seasonal-index-card" key={d.slug} style={{'--demo-accent':d.accent,'--demo-bg':d.background} as React.CSSProperties}><img src={d.image} alt={d.brand+' campaign concept artwork'} loading="lazy" decoding="async"/><div><span>{d.group} / {d.tag}</span><h2>{d.brand}</h2><strong>Explore concept ↗</strong></div></Link>)}</div></div></div>}
+
+type Device='phone'|'desktop';
+function LivePreview({slug,device}:{slug:string;device:Device}){
+ const host=useRef<HTMLDivElement>(null);
+ const [width,setWidth]=useState(800);
+ useEffect(()=>{const el=host.current;if(!el)return;const update=()=>setWidth(el.clientWidth);update();const obs=new ResizeObserver(update);obs.observe(el);return()=>obs.disconnect()},[device]);
+ const desktop=device==='desktop';
+ const viewport=desktop?1200:390;
+ const scale=Math.min(1,Math.max(0.1,(width-(desktop?0:16))/viewport));
+ const height=desktop?650:610;
+ return <div className={'demo-device '+(desktop?'demo-device-desktop':'demo-device-phone')} ref={host}>
+  <div className="demo-device-shell" style={{width:viewport*scale,height:(height+(!desktop?42:34))*scale}}>
+   <div className="demo-device-body" style={{width:viewport,height:height+(!desktop?42:34),transform:'scale('+scale+')',transformOrigin:'top left'}}>
+    <div className="demo-device-chrome" aria-hidden="true">{desktop?<><span className="demo-browser-dots">● ● ●</span><span className="demo-browser-address">lemma.studio / {slug}</span></>:<><span className="demo-phone-speaker"/><span className="demo-phone-label">LEMMA / LIVE PREVIEW</span></>}</div>
+    <iframe key={slug+'-'+device} title={slug.replaceAll('-',' ')+' interactive '+device+' preview'} src={'/landing-pages/'+slug+'/'} loading="lazy" sandbox="allow-scripts allow-same-origin" referrerPolicy="no-referrer" style={{width:viewport,height,border:0,display:'block',background:'#140e20'}}/>
+   </div>
+  </div>
+ </div>;
+}
+export function SeasonalDemoIndex(){
+ const [selected,setSelected]=useState<string>(seasonalDemos[0].slug);
+ const [device,setDevice]=useState<Device>('phone');
+ const active=seasonalDemos.find(d=>d.slug===selected)??seasonalDemos[0];
+ return <div className="demo-showcase"><div className="container">
+  <div className="demo-showcase-intro"><p className="eyebrow">LEMMA STUDIO / INTERACTIVE WEBSITE CONCEPTS</p><h1>Six worlds.<br/>One creative studio.</h1><p>Explore six fully built landing-page concepts. Switch between phone and desktop, then scroll and interact inside the preview. All brands and promotions are fictional.</p></div>
+  <section className="demo-preview-section" aria-label="Interactive website preview">
+   <div className="demo-preview-heading"><div><p className="eyebrow">{active.group} / {active.tag}</p><h2>{active.brand}</h2><p>{active.subtitle}</p></div><div className="demo-device-switch" role="group" aria-label="Preview device"><button type="button" className={device==='phone'?'is-active':''} aria-pressed={device==='phone'} onClick={()=>setDevice('phone')}>▯ Phone</button><button type="button" className={device==='desktop'?'is-active':''} aria-pressed={device==='desktop'} onClick={()=>setDevice('desktop')}>▣ Desktop</button></div></div>
+   <LivePreview slug={active.slug} device={device}/>
+   <div className="demo-preview-actions"><p>Scroll inside the frame to explore the actual landing page.</p><a className="btn btn-primary" href={'/landing-pages/'+active.slug+'/'}>Open full demo ↗</a></div>
+  </section>
+  <section className="demo-picker" aria-label="Choose a landing page"><h2 className="section-title">Choose a concept.</h2><div className="demo-picker-grid">{seasonalDemos.map((d,i)=><button type="button" key={d.slug} className={'demo-picker-card '+(selected===d.slug?'is-selected':'')} onClick={()=>{setSelected(d.slug);document.querySelector('.demo-preview-section')?.scrollIntoView({behavior:'smooth',block:'start'})}} aria-pressed={selected===d.slug}><span className="demo-picker-number">{String(i+1).padStart(2,'0')} / {d.group}</span><img src={d.image} alt={d.brand+' concept cover artwork'} loading="lazy" decoding="async"/><span className="demo-picker-copy"><strong>{d.brand}</strong><span>Preview website ↗</span></span></button>)}</div></section>
+  <p className="demo-fiction-note">These six websites are original fictional portfolio concepts. No depicted products, offers or tickets are available for purchase.</p>
+ </div></div>;
+}
