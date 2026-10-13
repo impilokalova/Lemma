@@ -11,7 +11,7 @@ export type Sample = {slug:string;title:string;type:'Poster'|'Flyer'|'Website'|'
 // Only publish samples once rights, artwork and share URLs have been confirmed.
 export const samples: Sample[] = [];
 export const serviceDetails: Record<string,{title:string;description:string}> = {
- creative:{title:'Creative design',description:'Identity, posters, flyers and promotional visuals built to make a business memorable.'},
- web:{title:'Web design',description:'Mobile-first landing pages and business websites with clear paths to enquiry.'},
- social:{title:'Social creative',description:'Consistent social content and campaign visuals for growing brands.'}
+ creative:{title:'Graphic design',description:'Poster design, promotional flyers, restaurant menus and brand visuals created for businesses.'},
+ web:{title:'Small business web design',description:'Responsive business websites and landing page design with clear navigation and paths to enquiry.'},
+ social:{title:'Social media design',description:'Branded social media graphics, content design and campaign visuals for growing businesses.'}
 };
