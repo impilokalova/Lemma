@@ -35,3 +35,14 @@
 .signature-detail-art img{width:100%;height:auto;display:block}
 .signature-detail-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 @media(max-width:700px){.signature-intro{padding:32px 20px}.signature-collection{padding:38px 0}.signature-gallery{grid-template-columns:1fr}.signature-gallery .signature-card:nth-child(2){display:none}.signature-card-image img{height:auto;max-height:520px}.signature-collection-top{align-items:start}.signature-outro{display:block}.signature-outro a{display:inline-block;margin-top:12px}}
+
+/* Active concept portfolio — replaces the obsolete coming-soon screen. */
+.concept-case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.concept-case-card{min-width:0;background:#f6f5f1;border:1px solid #d9cde0;overflow:hidden}
+.concept-case-card a{display:block;text-decoration:none;padding:12px}
+.concept-case-card img{width:100%;height:390px;object-fit:contain;background:#ede7ef;display:block}
+.concept-case-card h2{font-size:22px;letter-spacing:-.04em;margin:15px 5px 5px}
+.concept-case-card p{font-size:13px;color:#655773;margin:0 5px 12px}
+.concept-case-card span{display:block;margin:0 5px 8px;font-size:12px;color:#6b3897}
+@media(max-width:900px){.concept-case-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.concept-case-grid{grid-template-columns:1fr}.concept-case-card img{height:auto;max-height:490px}}
