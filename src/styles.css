@@ -12,3 +12,5 @@
 @import './mobile/styles/gallery.css';
 @import './tablet/styles/gallery.css';
 @import './desktop/styles/gallery.css';
+
+@import './pages/work/demos/seasonal.css';
