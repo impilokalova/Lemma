@@ -30,7 +30,7 @@ function LivePreview({slug,device}:{slug:string;device:Device}){
   <div className="demo-device-shell" style={{width:viewport*scale,height:(height+(!desktop?42:34))*scale}}>
    <div className="demo-device-body" style={{width:viewport,height:height+(!desktop?42:34),transform:'scale('+scale+')',transformOrigin:'top left'}}>
     <div className="demo-device-chrome" aria-hidden="true">{desktop?<><span className="demo-browser-dots">● ● ●</span><span className="demo-browser-address">lemma.studio / {slug}</span></>:<><span className="demo-phone-speaker"/><span className="demo-phone-label">LEMMA / LIVE PREVIEW</span></>}</div>
-    <iframe key={slug+'-'+device} title={slug.replaceAll('-',' ')+' interactive '+device+' preview'} src={'/landing-pages/'+slug+'/'} loading="lazy" sandbox="allow-scripts allow-same-origin" referrerPolicy="no-referrer" style={{width:viewport,height,border:0,display:'block',background:'#140e20'}}/>
+    <iframe key={slug+'-'+device} title={slug.replace(/-/g,' ')+' interactive '+device+' preview'} src={'/landing-pages/'+slug+'/'} loading="lazy" sandbox="allow-scripts allow-same-origin" referrerPolicy="no-referrer" style={{width:viewport,height,border:0,display:'block',background:'#140e20'}}/>
    </div>
   </div>
  </div>;
