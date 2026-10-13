@@ -1,4 +1,4 @@
-import {Link,useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import sneaker from '../../packages/09-bf-sneaker.png';
 import audio from '../../packages/10-bf-audio.png';
 import home from '../../packages/12-bf-home.png';
@@ -16,15 +16,3 @@ export const seasonalDemos=[
 ] as const;
 
 export function SeasonalDemoIndex(){return <div className="seasonal-index"><div className="container"><p className="seasonal-kicker">LEMMA STUDIO / INTERACTIVE CONCEPTS</p><h1>Six worlds.<br/>One creative studio.</h1><p>Explore six original, fictional seasonal landing-page demonstrations. No products, discounts, tickets or promotions shown here are offered for sale.</p><div className="seasonal-index-grid">{seasonalDemos.map(d=><Link to={'/landing-pages/'+d.slug+'/'} className="seasonal-index-card" key={d.slug} style={{'--demo-accent':d.accent,'--demo-bg':d.background} as React.CSSProperties}><img src={d.image} alt={d.brand+' campaign concept artwork'} loading="lazy" decoding="async"/><div><span>{d.group} / {d.tag}</span><h2>{d.brand}</h2><strong>Explore concept ↗</strong></div></Link>)}</div></div></div>}
-export function SeasonalLandingPage(){
- const {slug}=useParams();
- const d=seasonalDemos.find(item=>item.slug===slug);
- if(!d)return <div className="section container"><h1>Concept not found</h1><Link to="/work/demos">See all demonstrations</Link></div>;
- return <article className="seasonal-demo" style={{'--demo-accent':d.accent,'--demo-bg':d.background} as React.CSSProperties}>
-  <nav className="seasonal-demo-nav" aria-label="Concept navigation"><Link to="/work/demos">← LEMMA CONCEPTS</Link><strong>{d.brand}</strong><a href="#concept-details">EXPLORE ↓</a></nav>
-  <section className="seasonal-demo-hero"><div className="seasonal-demo-copy"><p className="seasonal-kicker">{d.eyebrow} / CONCEPT 2026</p><h1>{d.title}</h1><p>{d.subtitle}</p><a className="seasonal-demo-button" href="#concept-details">{d.cta} ↗</a><small>FICTIONAL DESIGN DEMONSTRATION — NOT A LIVE OFFER</small></div><div className="seasonal-demo-image"><img src={d.image} alt={d.brand+' original promotional design concept'} fetchPriority="high" decoding="async"/></div></section>
-  <div className="seasonal-demo-marquee" aria-hidden="true"><span>{d.tag} ◆ {d.group.toUpperCase()} ◆ ORIGINAL CONCEPT ◆ {d.tag} ◆ {d.group.toUpperCase()} ◆ ORIGINAL CONCEPT ◆</span></div>
-  <section className="seasonal-demo-details" id="concept-details"><div><p className="seasonal-kicker">THE CREATIVE DIRECTION</p><h2>Designed to make an impression.</h2><p>Distinctive art direction, purposeful hierarchy and a responsive shopping-inspired experience. This page demonstrates what Lemma can create for a seasonal campaign.</p></div><div className="seasonal-demo-feature-list">{d.features.map((f,i)=><div key={f}><span>0{i+1}</span><h3>{f}</h3><span>↗</span></div>)}</div></section>
-  <section className="seasonal-demo-finale"><p className="seasonal-kicker">LIKE THIS DIRECTION?</p><h2>Let's make it yours.</h2><p>All visuals are portfolio concepts, not live products, offers or events.</p><Link className="seasonal-demo-button" to="/contact">START A PROJECT ↗</Link><Link className="seasonal-demo-back" to="/work/demos">VIEW ALL SIX CONCEPTS</Link></section>
- </article>;
-}

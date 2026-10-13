@@ -13,7 +13,7 @@ npm run test
 
 Cloudflare Pages: build command `npm run build`, output `dist`. The `public/_redirects` file enables SPA deep links. Deploy previews from this branch; do not merge or publish production before review.
 
-This milestone contains responsive navigation, route skeletons, a typed content registry and Ultraviolet design tokens. The 3D hero, real contact form handler, client imagery, pricing and Canva assets are intentionally not included yet.
+The active homepage uses `src/hero/PlanetHero.tsx` with `src/hero/hero.css`, not the earlier per-device Three.js experiments. The six signature concepts live under `public/landing-pages/`, with an index in `src/pages/work/demos/SeasonalDemos.tsx`. The contact page currently has no verified enquiry destination and MUST NOT be described as a working submission endpoint. Portfolio case-study placeholders are also pending verified material.
 
 ## Preview workflow
 

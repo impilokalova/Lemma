@@ -1,7 +1,4 @@
 @import './shared/styles/base.css';
-@import './mobile/styles/layout.css';
-@import './tablet/styles/layout.css';
-@import './desktop/styles/layout.css';
 @import './mobile/styles/typography.css';
 @import './tablet/styles/typography.css';
 @import './desktop/styles/typography.css';
@@ -13,4 +10,3 @@
 @import './tablet/styles/gallery.css';
 @import './desktop/styles/gallery.css';
 
-@import './pages/work/demos/seasonal.css';
