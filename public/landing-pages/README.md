@@ -14,3 +14,6 @@ Artwork is currently served as original PNG. The gallery filenames must use
 the actual names in `shared/assets/`, not conceptual slug names. Convert to
 WebP/AVIF before public launch when an image-upload path is available; do not
 remove the PNG assets until replacement URLs are verified.
+
+## Image optimization pipeline
+Run `npm run build`. The `scripts/optimize-images.mjs` step uses the open-source `sharp` package to generate six 840-pixel WebP images from originals under `src/pages/packages`. The generated WebPs are intentionally not committed; Cloudflare Pages generates them before each Vite build. Keep source PNGs only in `src/pages/packages`. In Vite dev mode, run `node scripts/optimize-images.mjs` before `npm run dev`.

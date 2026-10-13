@@ -1,10 +1,10 @@
 import {Link} from 'react-router-dom';
-import sneaker from '../../packages/09-bf-sneaker.png';
-import audio from '../../packages/10-bf-audio.png';
-import home from '../../packages/12-bf-home.png';
-import afterDark from '../../packages/01-halloween-after-dark.png';
-import moth from '../../packages/02-halloween-moth.png';
-import spectral from '../../packages/04-halloween-spectral.png';
+const sneaker='/landing-pages/shared/assets/sneaker-drop.webp';
+const audio='/landing-pages/shared/assets/soundwave.webp';
+const home='/landing-pages/shared/assets/home-edit.webp';
+const afterDark='/landing-pages/shared/assets/after-dark.webp';
+const moth='/landing-pages/shared/assets/midnight-moth.webp';
+const spectral='/landing-pages/shared/assets/spectral-sweets.webp';
 
 export const seasonalDemos=[
  {slug:'sneaker-drop',group:'Black Friday',brand:'SOLE / SYSTEM',eyebrow:'THE BLACK FRIDAY EDIT',title:'MAKE YOUR NEXT MOVE.',subtitle:'A bold sneaker launch concept for the people who never stand still.',accent:'#C8FF43',background:'#0C0E0B',image:sneaker,cta:'EXPLORE THE DROP',tag:'FOOTWEAR',features:['Built for motion','Made to stand out','Everyday performance']},
