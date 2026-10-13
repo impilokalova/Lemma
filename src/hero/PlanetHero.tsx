@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {links} from '../shared/navigation/links';
-import mobileArtwork from './breakpoints/mobile/image_6287963c.jpg';
+import mobileArtwork from '../mobile/assets/image_6287963c.jpg';
 
 export function PlanetHero(){
  return <section className="studio-hero" aria-labelledby="studio-hero-heading">
