@@ -8,3 +8,7 @@
 @import './hero/hero.css';
 
 @import './pages/work/gallery/signature.css';
+
+@import './mobile/styles/gallery.css';
+@import './tablet/styles/gallery.css';
+@import './desktop/styles/gallery.css';
