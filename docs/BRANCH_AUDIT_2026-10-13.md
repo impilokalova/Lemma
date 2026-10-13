@@ -31,3 +31,6 @@ Branch: `feat/navigation-foundation-ultraviolet`. Production `main` is not modif
 - Portfolio galleries: `src/pages/work/gallery/`, `src/{mobile,tablet,desktop}/styles/gallery.css`.
 - Route registry: `src/site.tsx`, `src/shared/navigation/links.ts`.
 - SEO: `src/shared/seo/SeoHead.tsx`.
+
+## Final cleanup refinement
+The last 9.5 KB of obsolete WebGL/galaxy CSS was pruned from the shared stylesheet after confirming the active responsive homepage uses `studio-hero` in `src/hero/hero.css`. The unused Three.js and its typings were removed from dependencies, reducing build/download work. The original mobile hero image now lives only under `src/mobile/assets/`.
