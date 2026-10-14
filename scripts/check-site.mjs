@@ -6,7 +6,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const publicRoot=path.join(root,'public');
 const distRoot=path.join(root,'dist');
 const slugs=['sneaker-drop','soundwave','home-edit','after-dark','midnight-moth','spectral-sweets'];
-const pages=['/','/services','/work','/work/templates','/work/projects','/work/demos','/packages','/about','/contact','/services/creative','/services/web','/services/social'];
+const pages=['/','/services','/work','/work/samples','/work/templates','/work/projects','/work/demos','/packages','/about','/contact','/services/creative','/services/web','/services/social'];
 const errors=[];
 const warnings=[];
 function validateHtml(p){
@@ -42,7 +42,13 @@ for(const p of [path.join(publicRoot,'landing-pages','shared','style.css'),path.
 const registry=readFileSync(path.join(root,'src','pages','work','demos','SeasonalDemos.tsx'),'utf8');
 for(const slug of slugs)if(!registry.includes("slug:'"+slug+"'"))errors.push('Demo registry missing '+slug);
 const app=readFileSync(path.join(root,'src','site.tsx'),'utf8');
-for(const route of ['/work/demos','/work/templates','/contact'])if(!app.includes('path="'+route+'"'))errors.push('Main SPA route missing '+route);
+for(const route of ['/work/samples','/work/demos','/work/templates','/contact'])if(!app.includes('path="'+route+'"'))errors.push('Main SPA route missing '+route);
+const navigation=readFileSync(path.join(root,'src','shared','navigation','routes.ts'),'utf8');
+for(const route of ['/work/samples','/work/templates','/work/demos'])if(!navigation.includes("href:'"+route+"'"))errors.push('Work submenu missing '+route);
+const templatePage=readFileSync(path.join(root,'src','pages','work','templates','Templates.tsx'),'utf8');
+if(templatePage.includes('SignatureGallery'))errors.push('Templates must not render graphic design gallery');
+const graphicSamples=readFileSync(path.join(root,'src','pages','work','gallery','SignatureGallery.tsx'),'utf8');
+if(graphicSamples.includes("to={'/work/templates/'"))errors.push('Graphic artwork still links to old templates route');
 const contact=readFileSync(path.join(root,'src','pages','contact','Contact.tsx'),'utf8');
 if(contact.includes('No messages are collected'))warnings.push('Contact page exists, but no verified enquiry destination/form handler is configured.');
 if(readdirSync(path.join(root,'src','pages','work','demos')).some(n=>n.endsWith('.html')))errors.push('Stale standalone HTML remains in src/pages/work/demos; publish static files under public/');
