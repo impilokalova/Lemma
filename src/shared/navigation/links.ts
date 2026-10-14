@@ -1,0 +1,1 @@
+export const links={home:'/',services:'/services',creative:'/services/creative',web:'/services/web',social:'/services/social',work:'/work',projects:'/work/projects',templates:'/work/templates',landingPages:'/work/landing-pages',demos:'/work/demos',packages:'/packages',about:'/about',contact:'/contact'} as const;
