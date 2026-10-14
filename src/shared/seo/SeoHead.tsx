@@ -12,7 +12,8 @@ const pages:Record<string,Metadata>={
  '/services/social':{title:'Social Media Graphic & Content Design | Lemma Studio',description:'Branded social media posts, content graphics and campaign visual design for businesses.'},
  '/work':{title:'Graphic Design Portfolio & Website Concepts | Lemma Studio',description:'Original posters, promotional flyer samples, menu design concepts and interactive website demos by Lemma Studio.'},
  '/work/projects':{title:'Design Projects & Case Studies | Lemma Studio',description:'Discover Lemma Studio design concepts and verified client projects as they become available.',robots:'noindex,follow'},
- '/work/templates':{title:'Poster, Flyer & Menu Design Samples | Lemma Studio',description:'Browse twelve original promotional poster, restaurant menu and retail flyer design concepts.'},
+ '/work/samples':{title:'Graphic Design & Business Samples | Lemma Studio',description:'Original poster, flyer and restaurant menu samples with presentation and infographic concepts coming soon.'},
+ '/work/templates':{title:'Landing Page Templates | Lemma Studio',description:'Browse six original fictional promotional and seasonal landing page templates.'},
  '/work/demos':{title:'Landing Page & Website Design Examples | Lemma Studio',description:'Explore six original fictional landing page and website design concepts.',robots:'noindex,follow'},
  '/packages':{title:'Web Design & Graphic Design Packages | Lemma Studio',description:'Discover starting points for business websites, promotional graphic design and ongoing social media content design.'},
  '/about':{title:'About Lemma Studio | Creative Design South Africa',description:'Learn about Lemma Studio and our focus on responsive websites, original graphic design and social media visuals.'},
@@ -27,7 +28,7 @@ export function SeoHead(){
  const {pathname}=useLocation();
  useEffect(()=>{
   const path=pathname==='/'?'/':pathname.replace(/\/$/,'');
-  const artwork=path.startsWith('/work/templates/')?signatureArtworks.find(a=>a.slug===path.split('/')[3]):undefined;
+  const artwork=path.startsWith('/work/samples/')?signatureArtworks.find(a=>a.slug===path.split('/')[3]):undefined;
   const artworkMeta=artwork?{title:artwork.title+' | '+artwork.type+' Design Concept | Lemma Studio',description:'Original '+artwork.category.toLowerCase()+' design concept by Lemma Studio. Fictional portfolio artwork.'}:undefined;
   const data=pages[path]??artworkMeta??(path.startsWith('/services/')&&serviceDetails[path.split('/')[2]]?{
    title:serviceDetails[path.split('/')[2]].title+' | Lemma Studio',
