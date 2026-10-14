@@ -14,7 +14,8 @@ const pages:Record<string,Metadata>={
  '/work/projects':{title:'Design Projects & Case Studies | Lemma Studio',description:'Discover Lemma Studio design concepts and verified client projects as they become available.',robots:'noindex,follow'},
  '/work/samples':{title:'Graphic Design & Business Samples | Lemma Studio',description:'Original poster, flyer and restaurant menu samples with presentation and infographic concepts coming soon.'},
  '/work/templates':{title:'Landing Page Templates | Lemma Studio',description:'Browse six original fictional promotional and seasonal landing page templates.'},
- '/work/demos':{title:'Landing Page & Website Design Examples | Lemma Studio',description:'Explore six original fictional landing page and website design concepts.',robots:'noindex,follow'},
+ '/work/landing-pages':{title:'Interactive Landing Page Previews | Lemma Studio',description:'Explore six original fictional landing-page concepts with interactive phone and desktop previews.',robots:'noindex,follow'},
+ '/work/demos':{title:'Website Demos Coming Soon | Lemma Studio',description:'Full website demonstrations by Lemma Studio are coming soon.',robots:'noindex,follow'},
  '/packages':{title:'Web Design & Graphic Design Packages | Lemma Studio',description:'Discover starting points for business websites, promotional graphic design and ongoing social media content design.'},
  '/about':{title:'About Lemma Studio | Creative Design South Africa',description:'Learn about Lemma Studio and our focus on responsive websites, original graphic design and social media visuals.'},
  '/contact':{title:'Contact Lemma Studio | Web & Graphic Design',description:'Discuss a business website, landing page, promotional flyer or social media design project with Lemma Studio.'}
