@@ -7,9 +7,6 @@ export const nav: NavItem[] = [
   {label:'About',href:'/about'},
   {label:'Contact',href:'/contact'}
 ];
-export type Sample = {slug:string;title:string;type:'Poster'|'Flyer'|'Website'|'Landing Page';category:string;status:'Concept sample';canvaUrl?:string;previewUrl?:string};
-// Only publish samples once rights, artwork and share URLs have been confirmed.
-export const samples: Sample[] = [];
 export const serviceDetails: Record<string,{title:string;description:string}> = {
  creative:{title:'Graphic design',description:'Poster design, promotional flyers, restaurant menus and brand visuals created for businesses.'},
  web:{title:'Small business web design',description:'Responsive business websites and landing page design with clear navigation and paths to enquiry.'},
