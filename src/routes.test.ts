@@ -7,6 +7,7 @@ describe('navigation registry',()=>{
   expect(children).toContain('/work/samples');
   expect(children).toContain('/work/templates');
   expect(children).toContain('/work/demos');
+  expect(nav.find(x=>x.href==='/work')?.children?.find(x=>x.href==='/work/templates')?.label).toBe('Landing page templates');
   expect(new Set(children).size).toBe(children.length);
  });
  it('does not invent published client samples',()=>{
