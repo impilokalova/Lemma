@@ -45,7 +45,7 @@ export function SeasonalDemoIndex(){
  useEffect(()=>{const requested=params.get('concept');if(requested && seasonalDemos.some(d=>d.slug===requested))setSelectedState(requested)},[params]);
  const active=seasonalDemos.find(d=>d.slug===selected)??seasonalDemos[0];
  return <div className="demo-showcase"><div className="container">
-  <div className="demo-showcase-intro"><p className="eyebrow">LEMMA STUDIO / INTERACTIVE LANDING PAGE CONCEPTS</p><h1>Six worlds.<br/>One creative studio.</h1><p>Explore six fully built landing-page concepts. Switch between phone and desktop, then scroll and interact inside the preview. All brands and promotions are fictional.</p></div>
+  <div className="demo-showcase-intro"><p className="eyebrow">LEMMA STUDIO / INTERACTIVE LANDING PAGE CONCEPTS</p><h1>Six worlds.<br/>One creative studio.</h1><p>Explore four completed landing-page concepts and two coming-soon previews. Switch between phone and desktop, then scroll and interact inside the preview. All brands and promotions are fictional.</p></div>
   <section className="demo-preview-section" aria-label="Interactive landing page preview">
    <div className="demo-preview-heading"><div><p className="eyebrow">{active.group} / {active.tag}</p><h2>{active.brand}</h2><p>{active.subtitle}</p></div><div className="demo-device-switch" role="group" aria-label="Preview device"><button type="button" className={device==='phone'?'is-active':''} aria-pressed={device==='phone'} onClick={()=>setDevice('phone')}>▯ Phone</button><button type="button" className={device==='desktop'?'is-active':''} aria-pressed={device==='desktop'} onClick={()=>setDevice('desktop')}>▣ Desktop</button></div></div>
    <LivePreview slug={active.slug} device={device}/>
