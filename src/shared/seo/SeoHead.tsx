@@ -12,8 +12,8 @@ const pages:Record<string,Metadata>={
  '/services/social':{title:'Social Media Graphic & Content Design | Lemma Studio',description:'Branded social media posts, content graphics and campaign visual design for businesses.'},
  '/work':{title:'Graphic Design Portfolio & Website Concepts | Lemma Studio',description:'Original posters, promotional flyer samples, menu design concepts and interactive website demos by Lemma Studio.'},
  '/work/projects':{title:'Design Projects & Case Studies | Lemma Studio',description:'Discover Lemma Studio design concepts and verified client projects as they become available.',robots:'noindex,follow'},
- '/work/samples':{title:'Graphic Design & Business Samples | Lemma Studio',description:'Original poster, flyer and restaurant menu samples with presentation and infographic concepts coming soon.'},
- '/work/templates':{title:'Landing Page Templates | Lemma Studio',description:'Browse six original fictional promotional and seasonal landing page templates.'},
+ '/work/samples':{title:'Graphic Design & Business Samples | Lemma Studio',description:'Original posters, flyers, restaurant menus and historical sports infographic concepts. PowerPoint presentations coming soon.'},
+ '/work/templates':{title:'Landing Page Templates | Lemma Studio',description:'Explore four completed landing page concepts and two coming-soon previews.'},
  '/work/landing-pages':{title:'Interactive Landing Page Previews | Lemma Studio',description:'Explore six original fictional landing-page concepts with interactive phone and desktop previews.',robots:'noindex,follow'},
  '/work/demos':{title:'Website Demos Coming Soon | Lemma Studio',description:'Full website demonstrations by Lemma Studio are coming soon.',robots:'noindex,follow'},
  '/packages':{title:'Web Design & Graphic Design Packages | Lemma Studio',description:'Discover starting points for business websites, promotional graphic design and ongoing social media content design.'},
@@ -47,7 +47,17 @@ export function SeoHead(){
   meta('og:type','website','property');
   meta('og:site_name','Lemma Studio','property');
   meta('og:url',location.origin+path,'property');
-  meta('twitter:card','summary');
+  meta('twitter:card','summary_large_image');
+  meta('twitter:title',title);
+  meta('twitter:description',description);
+  meta('og:locale','en_ZA','property');
+  document.getElementById('lemma-jsonld')?.remove();
+  if(!isPreview&&!unknown){
+   const node=document.createElement('script');
+   node.id='lemma-jsonld';node.type='application/ld+json';
+   node.textContent=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:title,description,url:location.origin+path,isPartOf:{'@type':'WebSite',name:'Lemma Studio',url:location.origin+'/'},publisher:{'@type':'Organization',name:'Lemma Studio',url:location.origin+'/'}});
+   document.head.appendChild(node);
+  }
   const existing=document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
   if(isPreview){existing?.remove();}
   else {
