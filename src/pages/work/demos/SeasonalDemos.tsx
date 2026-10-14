@@ -1,4 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
+import {useSearchParams} from 'react-router-dom';
 const sneaker='/landing-pages/shared/assets/sneaker-drop.webp';
 const audio='/landing-pages/shared/assets/soundwave.webp';
 const home='/landing-pages/shared/assets/home-edit.webp';
@@ -36,8 +37,12 @@ function LivePreview({slug,device}:{slug:string;device:Device}){
  </div>;
 }
 export function SeasonalDemoIndex(){
- const [selected,setSelected]=useState<string>(seasonalDemos[0].slug);
+ const [params,setParams]=useSearchParams();
+ const requested=params.get('concept');
+ const [selected,setSelectedState]=useState<string>(requested && seasonalDemos.some(d=>d.slug===requested)?requested:seasonalDemos[0].slug);
+ const setSelected=(slug:string)=>{setSelectedState(slug);setParams({concept:slug},{replace:true});};
  const [device,setDevice]=useState<Device>('phone');
+ useEffect(()=>{const requested=params.get('concept');if(requested && seasonalDemos.some(d=>d.slug===requested))setSelectedState(requested)},[params]);
  const active=seasonalDemos.find(d=>d.slug===selected)??seasonalDemos[0];
  return <div className="demo-showcase"><div className="container">
   <div className="demo-showcase-intro"><p className="eyebrow">LEMMA STUDIO / INTERACTIVE WEBSITE CONCEPTS</p><h1>Six worlds.<br/>One creative studio.</h1><p>Explore six fully built landing-page concepts. Switch between phone and desktop, then scroll and interact inside the preview. All brands and promotions are fictional.</p></div>
