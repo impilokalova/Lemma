@@ -2,7 +2,7 @@ export type NavItem = { label: string; href: string; children?: { label: string;
 export const nav: NavItem[] = [
   {label:'Home',href:'/'},
   {label:'Services',href:'/services',children:[{label:'Creative',href:'/services/creative'},{label:'Web',href:'/services/web'},{label:'Social',href:'/services/social'}]},
-  {label:'Work',href:'/work',children:[{label:'Case studies',href:'/work/projects'},{label:'Samples',href:'/work/samples'},{label:'Templates',href:'/work/templates'},{label:'Website demos',href:'/work/demos'}]},
+  {label:'Work',href:'/work',children:[{label:'Case studies',href:'/work/projects'},{label:'Samples',href:'/work/samples'},{label:'Landing page templates',href:'/work/templates'},{label:'Website demos',href:'/work/demos'}]},
   {label:'Packages',href:'/packages'},
   {label:'About',href:'/about'},
   {label:'Contact',href:'/contact'}
