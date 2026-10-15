@@ -4,7 +4,6 @@ export const nav: NavItem[] = [
   {label:'Services',href:'/services',children:[{label:'Creative',href:'/services/creative'},{label:'Web',href:'/services/web'},{label:'Social',href:'/services/social'}]},
   {label:'Work',href:'/work',children:[{label:'Case studies',href:'/work/projects'},{label:'Samples',href:'/work/samples'},{label:'Landing page templates',href:'/work/templates'},{label:'Website demos',href:'/work/demos'}]},
   {label:'Packages',href:'/packages'},
-  {label:'Get a Quote',href:'/quote'},
   {label:'About',href:'/about'},
   {label:'Contact',href:'/contact'}
 ];
