@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest';
-import {SERVICES} from './lemma-quote/catalog';
+import {SERVICES,getService} from './lemma-quote/catalog';
 import {buildBrief,emptyDraft,lineTotal,totals} from './lemma-quote/quote';
 import {legalLinks,legalPages} from './pages/legal/LegalPages';
 describe('customer quotation integration',()=>{
@@ -16,6 +16,7 @@ describe('customer quotation integration',()=>{
   expect(buildBrief(draft).replace(/\u00a0/g,' ')).toContain('R1 575');
   expect(buildBrief(draft)).toContain('Sample Customer');
  });
+ it('makes all three package offers quotable at published prices',()=>{expect(getService('pkg-creative-starter')?.price).toBe(650);expect(getService('pkg-business-presence')?.price).toBe(1890);expect(getService('pkg-monthly-creative')?.price).toBe(1100);expect(getService('pkg-monthly-creative')?.unit).toBe('/month');});
  it('offers separate accessible policy URLs',()=>{
   expect(legalPages.length).toBeGreaterThanOrEqual(7);
   expect(new Set(legalPages.map(p=>p.slug)).size).toBe(legalPages.length);
