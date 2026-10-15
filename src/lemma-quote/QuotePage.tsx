@@ -5,7 +5,7 @@ import {buildBrief,emptyDraft,lineTotal,newReference,totals,type Draft} from './
 import {resolveContact,type ResolvedContact} from './contact-config';
 const KEY='lemma-quote-draft';
 const enquiryEmail=(import.meta.env.VITE_LEMMA_ENQUIRY_EMAIL||'').trim();
-const validEnquiryEmail=/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(enquiryEmail);
+const validEnquiryEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(enquiryEmail);
 const inputStyle:React.CSSProperties={display:'block',width:'100%',padding:12,margin:'6px 0 15px',borderRadius:8,border:'1px solid #777',background:'transparent',color:'inherit'};
 const cardStyle:React.CSSProperties={padding:18,border:'1px solid #7775',borderRadius:12,marginBottom:12};
 export function QuotePage(){
