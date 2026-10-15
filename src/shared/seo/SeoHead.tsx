@@ -1,3 +1,4 @@
+import {legalPages} from '../../pages/legal/LegalPages';
 import {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import {serviceDetails} from '../navigation/routes';
@@ -18,6 +19,8 @@ const pages:Record<string,Metadata>={
  '/work/demos':{title:'Website Demos Coming Soon | Lemma Studio',description:'Full website demonstrations by Lemma Studio are coming soon.',robots:'noindex,follow'},
  '/packages':{title:'Web Design & Graphic Design Packages | Lemma Studio',description:'Discover starting points for business websites, promotional graphic design and ongoing social media content design.'},
  '/about':{title:'About Lemma Studio | Creative Design South Africa',description:'Learn about Lemma Studio and our focus on responsive websites, original graphic design and social media visuals.'},
+ '/quote':{title:'Build a Quote | Lemma Studio',description:'Build an itemised ZAR quotation for graphic design, websites, presentations and branding.'},
+ '/legal':{title:'Policies & Legal Information | Lemma Studio',description:'Read Lemma Studio privacy, POPIA, refund, service and access to information policies.'},
  '/contact':{title:'Contact Lemma Studio | Web & Graphic Design',description:'Discuss a business website, landing page, promotional flyer or social media design project with Lemma Studio.'}
 };
 function meta(name:string,content:string,attr:'name'|'property'='name'){
@@ -31,7 +34,8 @@ export function SeoHead(){
   const path=pathname==='/'?'/':pathname.replace(/\/$/,'');
   const artwork=path.startsWith('/work/samples/')?signatureArtworks.find(a=>a.slug===path.split('/')[3]):undefined;
   const artworkMeta=artwork?{title:artwork.title+' | '+artwork.type+' Design Concept | Lemma Studio',description:'Original '+artwork.category.toLowerCase()+' design concept by Lemma Studio. Fictional portfolio artwork.'}:undefined;
-  const data=pages[path]??artworkMeta??(path.startsWith('/services/')&&serviceDetails[path.split('/')[2]]?{
+  const policy=path.startsWith('/legal/')?legalPages.find(p=>'/legal/'+p.slug===path):undefined;
+  const data=pages[path]??(policy?{title:policy.title+' | Lemma Studio',description:policy.intro,robots:'noindex,follow'}:undefined)??artworkMeta??(path.startsWith('/services/')&&serviceDetails[path.split('/')[2]]?{
    title:serviceDetails[path.split('/')[2]].title+' | Lemma Studio',
    description:serviceDetails[path.split('/')[2]].description
   }:undefined);
