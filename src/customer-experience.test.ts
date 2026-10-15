@@ -13,7 +13,7 @@ describe('customer quotation integration',()=>{
   expect(lineTotal(items[0])).toEqual({base:300,fee:75,total:375});
   expect(totals(items)).toEqual({base:1500,fee:75,total:1575});
   const draft=emptyDraft();draft.items=items;draft.details.fullName='Sample Customer';draft.details.email='sample@example.com';
-  expect(buildBrief(draft)).toContain('R1 575');
+  expect(buildBrief(draft).replace(/\u00a0/g,' ')).toContain('R1 575');
   expect(buildBrief(draft)).toContain('Sample Customer');
  });
  it('offers separate accessible policy URLs',()=>{
