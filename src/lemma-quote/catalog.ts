@@ -41,6 +41,9 @@ const s = (
 ): Service => ({ id, name, category, price, delivery, speeds, ...extra });
 
 export const SERVICES: Service[] = [
+  s("pkg-creative-starter", "Creative Starter package", "design", 650, "2–4 business days", QUICK, {note:"Bundle: 1 poster, 1 flyer, 1 social post and 1 carousel (up to 5 slides). One revision round."}),
+  s("pkg-business-presence", "Business Presence package", "web", 1890, "5–7 business days", SLOW, {note:"Bundle: 1 landing page, 1 contact form, basic on-page SEO and 1 social post. Domain and hosting excluded."}),
+  s("pkg-monthly-creative", "Monthly Creative package", "design", 1100, "Monthly schedule by agreement", NONE, {unit:"/month",note:"Monthly bundle: 6 social posts and 2 carousels (up to 5 slides each). One revision round per deliverable."}),
   s("poster", "Poster", "design", 150, "4–24 hours", QUICK),
   s("flyer", "Flyer", "design", 180, "4–24 hours", QUICK),
   s("social-post", "Social media post", "design", 120, "4–24 hours", QUICK),
