@@ -26,3 +26,12 @@
 
 /* Lemma signature sport-archive preview tiles */
 .lemma-sports-cover{width:100%;height:100%;min-height:280px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;color:#fff9e8;background:radial-gradient(ellipse at 75% 28%,#b16cff77,transparent 50%),linear-gradient(145deg,#1a1227 0%,#08060e 60%,#594020 100%);overflow:hidden;position:relative}.lemma-sports-cover:before{content:'';position:absolute;inset:12%;border:1px solid #f6c44a55;transform:rotate(-14deg);pointer-events:none}.lemma-sports-cover span{font:800 11px Arial,sans-serif;letter-spacing:.25em;color:#e7bb64;z-index:1}.lemma-sports-cover strong{font:900 clamp(38px,4vw,74px)/.87 Impact,'Arial Narrow',sans-serif;letter-spacing:-.025em;text-shadow:0 4px 30px #000;z-index:1}.lemma-sports-cover em{font:800 12px Arial,sans-serif;letter-spacing:.06em;color:#e4c58e;z-index:1;font-style:normal}.lemma-sample-image:has(.lemma-sports-cover){text-decoration:none}@media(max-width:700px){.lemma-sports-cover{padding:18px}.lemma-sports-cover strong{font-size:clamp(34px,10vw,62px)}}
+
+/* Responsive artwork viewer: contain the entire poster/menu within the available
+   viewport instead of rendering at its native dimensions. */
+.lemma-sample-detail .container{min-width:0}
+.lemma-detail-art{width:min(100%,820px);max-width:100%;min-width:0;margin:24px auto;padding:clamp(8px,1.6vw,14px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lemma-detail-art img{display:block;width:auto;max-width:100%;height:auto;max-height:min(75dvh,900px);object-fit:contain;object-position:center;margin-inline:auto}
+.lemma-sample-detail h1{overflow-wrap:anywhere}
+@media(max-width:767px){.lemma-detail-art{width:100%;margin:20px auto;padding:8px}.lemma-detail-art img{max-height:calc(100dvh - 190px);max-height:min(72dvh,720px)}}
+@media(max-height:550px){.lemma-detail-art img{max-height:65dvh}}
