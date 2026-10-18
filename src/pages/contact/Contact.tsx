@@ -14,7 +14,7 @@ export function Contact(){
  const update=(key:keyof Enquiry,value:string|boolean)=>{setData(d=>({...d,[key]:value}));setCopied(false);setStatus('')};
  const summary=()=>['LEMMA STUDIO — GENERAL ENQUIRY','Name: '+data.name,'Email: '+data.email,'Business: '+(data.business||'—'),'Country: '+data.country,'Phone: '+(data.phone||'—'),'Service: '+data.service,'Budget: '+(data.budget||'Not specified'),'Deadline: '+(data.deadline||'Flexible'),'Preferred reply: '+data.contact,'Project: '+data.description,'Reference links: '+(data.links||'—')].join('\n');
  const valid=data.name.trim()&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)&&data.country.trim()&&data.service&&data.description.trim()&&data.consent;
- const copy=async()=>{try{await navigator.clipboard.writeText(summary());setCopied(true);setStatus('Enquiry copied. You can email it to us directly.')}catch{setStatus('Copy failed. Please select and copy your details manually.')}};\n
+ const copy=async()=>{try{await navigator.clipboard.writeText(summary());setCopied(true);setStatus('Enquiry copied. You can email it to us directly.')}catch{setStatus('Copy failed. Please select and copy your details manually.')}};
  return <><Intro eyebrow="START A PROJECT" title="Let's create something useful." description="Ask a question, describe a project, or prepare a detailed quotation — wherever you're based."/>
  <section className="section container" style={{maxWidth:1050}}>
  <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:32}}>
@@ -35,7 +35,7 @@ export function Contact(){
  <label>Project description *<textarea name="description" style={{...field,minHeight:125}} required value={data.description} onChange={e=>update('description',e.target.value)} placeholder="What are you creating, and what should it achieve?"/></label>
  <label>Reference links / inspiration<textarea name="links" style={{...field,minHeight:75}} value={data.links} onChange={e=>update('links',e.target.value)} placeholder="Links to brand assets or inspiration (optional)"/></label>
  <label>Preferred reply method<select name="contact" style={field} value={data.contact} onChange={e=>update('contact',e.target.value)}><option value="email">Email</option><option value="whatsapp">WhatsApp</option><option value="telegram">Telegram</option><option value="phone">Phone</option></select></label>
- <div aria-hidden="true" style={{position:"absolute",left:"-9999px"}}><label>Website<input tabIndex={-1} autoComplete="off" value={website} onChange={e=>setWebsite(e.target.value)}/></label></div>\n <label style={{display:'flex',gap:10,alignItems:'start',marginBottom:20}}><input name="consent" value="yes" type="checkbox" checked={data.consent} required onChange={e=>update('consent',e.target.checked)}/> I agree to Lemma using these details to respond to my enquiry.</label>
+ <label style={{display:'flex',gap:10,alignItems:'start',marginBottom:20}}><input name="consent" value="yes" type="checkbox" checked={data.consent} required onChange={e=>update('consent',e.target.checked)}/> I agree to Lemma using these details to respond to my enquiry.</label>
  <button className="btn btn-primary" type="submit" disabled={!valid}>Send enquiry</button>{' '}<button className="btn" type="button" disabled={!valid} onClick={()=>void copy()}>{copied?'Copied ✓':'Copy details'}</button>
  <p role="status" aria-live="polite"><small>{status}</small></p>
  </form></div></section></>;
