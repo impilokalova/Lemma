@@ -1,17 +1,16 @@
-# Lemma enquiry email delivery
+# Free FormSubmit enquiry setup
 
-Cloudflare Pages Function: `functions/api/enquiry.ts`, POST `/api/enquiry`.
+Lemma Studio's general contact form at https://lemma-3cz.pages.dev/contact uses a standard HTML POST to `https://formsubmit.co/contact.lemmastudio@gmail.com`.
 
-The general contact form submits to this function. It validates required fields and consent, rejects cross-origin browser submissions, checks a honeypot, and forwards the message through Resend to `contact.lemmastudio@gmail.com` with the client's email as Reply-To.
+No custom domain, Resend account, API key, Cloudflare Pages Function or paid hosting is required.
 
-## Activation (required before merging / production)
+## Activate and test
 
-1. In Resend, create an API key and verify a sending domain owned by Lemma. A Gmail address cannot be used as an unverified sending domain.
-2. In Cloudflare dashboard → Workers & Pages → `lemma` → Settings → Variables and Secrets → Production, set **secret** `RESEND_API_KEY` and **variable** `LEMMA_FROM_EMAIL` to a sender at the verified domain (for example `Lemma Studio <hello@your-verified-domain.example>`).
-3. Strongly recommended before production: create a Cloudflare Turnstile widget and add a token to the form, then set `TURNSTILE_SECRET_KEY`. The handler already verifies submitted tokens when that secret is present; **do not enable the secret until the widget is wired into the form**. Also configure Cloudflare rate limiting for `/api/enquiry` to deter abuse.
-4. Deploy the branch to Pages, send a test enquiry, verify arrival in the business Gmail inbox and verify Reply-To, then merge to main.
-5. Never put API keys in `VITE_*` environment variables or commit secrets.
+1. Once the new deployment is live, submit a test enquiry on the contact page with a real sender email address. The form redirects to FormSubmit's verification/thank-you flow, then to Lemma's contact page if accepted.
+2. Open **contact.lemmastudio@gmail.com** and look for the **FormSubmit activation email** (check Spam). Click its confirmation link. FormSubmit may hold initial enquiries until this step is completed.
+3. Submit a **second** test enquiry and confirm that the email arrives in the Lemma inbox with the submitted fields. Test the Reply action.
+4. If mail does not arrive, check Spam and FormSubmit's activation instructions before advertising the form as operational.
 
-Without the Resend configuration, the function returns HTTP 503 and the contact page displays the direct Gmail fallback. No success message is shown for a failed delivery.
+FormSubmit handles spam filtering and CAPTCHA; the form also includes a honeypot. FormSubmit is a third-party processor of submitted enquiry data. Do not enter confidential information.
 
-Note: The quote builder's email action remains a client-side mailto link and is a separate flow.
+**Scope:** The `/contact` general enquiry form is connected. The `/quote` builder has its own separate mailto/WhatsApp workflow and is not automatically delivered by this change.
