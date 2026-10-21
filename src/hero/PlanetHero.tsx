@@ -8,7 +8,7 @@ export function PlanetHero(){
   <div className="studio-hero-inner container">
    <div className="studio-hero-copy">
     <p className="studio-kicker"><span/> INDEPENDENT CREATIVE STUDIO / SOUTH AFRICA</p>
-    <h1 id="studio-hero-heading">Your next<br/>big idea.<br/><em>Made real.</em></h1>
+    <h1 id="studio-hero-heading">Your next{' '}<br/>big idea.<br/><em>Made real.</em></h1>
     <p className="studio-hero-description">Distinctive websites, graphic design and social creative. Thoughtfully made for businesses ready to be seen.</p>
     <div className="studio-hero-actions"><StudioLink to="/contact">Start a project</StudioLink><StudioLink to="/work" quiet>Explore our work</StudioLink></div>
     <Link className="studio-services-link" to="/services">A small studio for your next big step <span aria-hidden="true">↓</span></Link>
