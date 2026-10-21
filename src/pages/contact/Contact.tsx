@@ -18,11 +18,11 @@ export function Contact(){
  return <><Intro eyebrow="START A PROJECT" title="Let's create something useful." description="Ask a question, describe a project, or prepare a detailed quotation — wherever you're based."/>
  <section className="section container" style={{maxWidth:1050}}>
  <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:32}}>
- <div><h2>General enquiry</h2><p>Not ready to choose a package? Tell us about your idea using this form. Send your enquiry to Lemma Studio through our free FormSubmit service, or email us directly.</p>
+ <div className="enquiry-aside"><h2>General enquiry</h2><p>Not ready to choose a package? Tell us about your idea using this form. Send your enquiry to Lemma Studio through our free FormSubmit service, or email us directly.</p>
  <p><strong>Want an estimated price now?</strong></p><Link className="btn btn-primary" to="/quote">Build a detailed quotation ↗</Link>
  <p style={{marginTop:20}}>We welcome clients worldwide. Quotation estimates are shown in ZAR; payment arrangements are agreed individually.</p>
  <p><a href="mailto:contact.lemmastudio@gmail.com">contact.lemmastudio@gmail.com</a></p><p><small>Submitting shares your details with FormSubmit for email forwarding. On your first submission, Lemma must confirm the FormSubmit activation email before messages can be delivered. Please don't include confidential or sensitive information.</small></p></div>
- <form action="https://formsubmit.co/contact.lemmastudio@gmail.com" method="POST" aria-label="General project enquiry form" style={{padding:24,border:'1px solid #8886',borderRadius:16}}>
+ <form className="enquiry-form" action="https://formsubmit.co/contact.lemmastudio@gmail.com" method="POST" aria-label="General project enquiry form" style={{padding:24,border:'1px solid #8886',borderRadius:16}}>
  <h2>Tell us what you need</h2><input type="hidden" name="_subject" value="New Lemma Studio project enquiry"/><input type="hidden" name="_template" value="table"/><input type="hidden" name="_url" value="https://lemma-3cz.pages.dev/contact"/><input type="hidden" name="_next" value="https://lemma-3cz.pages.dev/contact?submitted=1"/><input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px",height:1,width:1,opacity:0}}/>
  <div style={group}><label>Full name *<input style={field} required name="name" autoComplete="name" value={data.name} onChange={e=>update('name',e.target.value)}/></label>
  <label>Email address *<input style={field} name="email" type="email" required autoComplete="email" value={data.email} onChange={e=>update('email',e.target.value)}/></label>

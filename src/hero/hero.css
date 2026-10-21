@@ -50,3 +50,13 @@ body:has(.studio-hero) .site-header{display:block;background:#090610;border-colo
  .studio-hero-copy{max-width:460px}
 }
 @media(prefers-reduced-motion:reduce){.studio-primary{transition:none}.studio-primary:hover{transform:none}}
+
+/* Studio refresh: editorial typography and a quieter image treatment. */
+.studio-hero h1{font-weight:500;letter-spacing:-.06em;line-height:1.02}
+.studio-hero h1 em{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;background:none;-webkit-text-fill-color:#d6afea;color:#d6afea}
+.studio-hero::after{background:linear-gradient(90deg,#090610f5 0%,#090610d9 32%,#09061020 80%),linear-gradient(0deg,#090610 0%,transparent 24%)}
+.studio-hero-actions{gap:14px}
+.studio-art-caption{position:absolute;right:0;bottom:120px;display:grid;gap:9px;text-align:right;font-size:8px;letter-spacing:.2em;color:#c1a7d2}
+.studio-art-caption span:last-child{font-size:7px;color:#9780a7}
+@media(max-width:1023px){.studio-art-caption{display:none}.studio-hero::after{background:linear-gradient(0deg,#090610 0%,#090610 28%,#09061080 45%,transparent 68%)}}
+@media(max-width:599px){.studio-hero::after{background:linear-gradient(0deg,#090610 0%,#090610 34%,#090610a0 52%,transparent 76%)}.studio-hero-inner{padding-top:265px}.studio-hero-actions{flex-direction:column;align-items:flex-start;gap:12px}.studio-hero-actions .studio-link{min-width:220px}.studio-kicker{font-size:8px;letter-spacing:.1em}.studio-hero h1{font-size:clamp(48px,12vw,66px)}.studio-hero-foot{font-size:7px}}
