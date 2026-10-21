@@ -39,7 +39,7 @@ export function SeoHead(){
    title:serviceDetails[path.split('/')[2]].title+' | Lemma Studio',
    description:serviceDetails[path.split('/')[2]].description
   }:undefined);
-  const isPreview=location.hostname.endsWith('.pages.dev')||location.hostname==='localhost'||location.hostname==='127.0.0.1';
+  const isPreview=(location.hostname.endsWith('.pages.dev')&&location.hostname!=='lemma-3cz.pages.dev')||location.hostname==='localhost'||location.hostname==='127.0.0.1';
   const unknown=!data||path.startsWith('/work/projects/')||path.startsWith('/work/demos/');
   const title=data?.title||'Page Not Found | Lemma Studio';
   const description=data?.description||'Explore creative design and web services from Lemma Studio.';
