@@ -2,7 +2,7 @@
    Animated Image Slider (MDJAmin), and Contact Form 001. Demo-wide resets,
    fixed dimensions and body scroll overrides are deliberately scoped out. */
 :root{--studio-ink:#100c19;--studio-paper:#f7f4fa;--studio-line:#dcd3e5}
-body{background:var(--studio-paper)}
+body{background:var(--studio-paper);overflow-x:clip}
 .site-header,body:has(.studio-hero) .site-header{background:#100c19f2;border-bottom:1px solid #ffffff16;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .wordmark{font-size:28px;letter-spacing:-.075em}
 .nav-bar{height:82px}.nav-link{font-size:13px}.desktop-nav{gap:26px}
