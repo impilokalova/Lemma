@@ -1,17 +1,17 @@
 /**
  * CONTACT_CONFIG — owner setup
  * ---------------------------------------------------------------
- * No WhatsApp number or Telegram username has been provided yet.
- * To go live, set these PUBLIC environment variables at deploy time:
+ * WhatsApp Business: +27 79 475 0556 (public customer enquiry number).
+ * These PUBLIC environment variables can override the defaults at deploy time:
  *
  *   VITE_LEMMA_WHATSAPP_NUMBER=27XXXXXXXXX   (international digits, no + or spaces)
  *   VITE_LEMMA_TELEGRAM_USERNAME=yourhandle  (no @)
  *
- * Until set, buttons show a disabled "Connect soon" state.
+ * WhatsApp is enabled by default. Telegram stays disabled until configured.
  * /settings/contact lets the owner test values in THEIR browser only.
  */
 export const CONTACT_CONFIG: { whatsappNumber: string | null; telegramUsername: string | null } = {
-  whatsappNumber: cleanDigits(import.meta.env['VITE_LEMMA_WHATSAPP_NUMBER']) || null,
+  whatsappNumber: cleanDigits(import.meta.env['VITE_LEMMA_WHATSAPP_NUMBER']) || '27794750556',
   telegramUsername: cleanTg(import.meta.env['VITE_LEMMA_TELEGRAM_USERNAME']) || null,
 };
 
