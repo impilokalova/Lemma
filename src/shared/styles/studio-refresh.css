@@ -6,6 +6,9 @@ body{background:var(--studio-paper)}
 /* A translated, visibility:hidden drawer still widens mobile viewports. */
 .responsive-menu[hidden]{display:none}
 .site-header,body:has(.studio-hero) .site-header{background:#100c19f2;border-bottom:1px solid #ffffff16;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+/* Backdrop filters make the header the containing block for fixed children.
+   Keep the mobile/tablet drawer and scrim anchored to the viewport. */
+@media(max-width:1199px){.site-header,body:has(.studio-hero) .site-header{backdrop-filter:none;-webkit-backdrop-filter:none}}
 .wordmark{font-size:28px;letter-spacing:-.075em}
 .nav-bar{height:82px}.nav-link{font-size:13px}.desktop-nav{gap:26px}
 .desktop-cta{border:1px solid #d3b7f650;box-shadow:inset 1px 1px 1px #ffffff32;background:#ffffff0a;color:#f4eafb;min-height:42px;font-size:12px}
