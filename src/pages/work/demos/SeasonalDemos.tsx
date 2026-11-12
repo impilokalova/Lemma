@@ -9,6 +9,7 @@ const spectral='/landing-pages/shared/assets/spectral-sweets.webp';
 
 
 export const seasonalDemos=[
+ {slug:'wedding-rings',group:'Wedding',brand:'NALEDI & THABO',eyebrow:'WEDDING INVITATION',title:'FOREVER BEGINS HERE.',subtitle:'An elegant baby-blue and gold wedding landing page with floating animated rings, RSVP, seating and photo preview.',accent:'#C8A15A',background:'#C5E1F4',image:home,cta:'VIEW THE INVITATION',tag:'EVENT',features:['Floating gold rings','Guest seating search','Photo sharing preview']},
  {slug:'sneaker-drop',group:'Black Friday',brand:'SOLE / SYSTEM',eyebrow:'THE BLACK FRIDAY EDIT',title:'MAKE YOUR NEXT MOVE.',subtitle:'A bold sneaker launch concept for the people who never stand still.',accent:'#C8FF43',background:'#0C0E0B',image:sneaker,cta:'EXPLORE THE DROP',tag:'FOOTWEAR',features:['Built for motion','Made to stand out','Everyday performance']},
  {slug:'soundwave',group:'Black Friday',brand:'SOUND / WAVE',eyebrow:'BLACK FRIDAY AUDIO',title:'HEAR WHAT MATTERS.',subtitle:'An immersive electronics campaign built around sound, clarity and design.',accent:'#63D7FF',background:'#07111F',image:audio,cta:'FEEL THE SOUND',tag:'AUDIO',features:['Immersive listening','Every detail matters','Designed to move']},
  {slug:'home-edit',group:'Black Friday',brand:'FORM / HOME',eyebrow:'THE SEASONAL HOME EDIT',title:'LIVE BEAUTIFULLY.',subtitle:'Quiet luxury meets an editorial homeware shopping experience.',accent:'#D8A97D',background:'#211A18',image:home,cta:'EXPLORE THE EDIT',tag:'INTERIORS',features:['Objects with purpose','Considered materials','A quieter kind of luxury']},
@@ -45,13 +46,13 @@ export function SeasonalDemoIndex(){
  useEffect(()=>{const requested=params.get('concept');if(requested && seasonalDemos.some(d=>d.slug===requested))setSelectedState(requested)},[params]);
  const active=seasonalDemos.find(d=>d.slug===selected)??seasonalDemos[0];
  return <div className="demo-showcase"><div className="container">
-  <div className="demo-showcase-intro"><p className="eyebrow">LEMMA STUDIO / INTERACTIVE LANDING PAGE CONCEPTS</p><h1>Six worlds.<br/>One creative studio.</h1><p>Explore four completed landing-page concepts and two coming-soon previews. Switch between phone and desktop, then scroll and interact inside the preview. All brands and promotions are fictional.</p></div>
+  <div className="demo-showcase-intro"><p className="eyebrow">LEMMA STUDIO / INTERACTIVE LANDING PAGE CONCEPTS</p><h1>Seven worlds.<br/>One creative studio.</h1><p>Explore seven landing-page concepts, including our animated wedding invitation. Switch between phone and desktop, then scroll and interact inside the preview. All brands and promotions are fictional.</p></div>
   <section className="demo-preview-section" aria-label="Interactive landing page preview">
    <div className="demo-preview-heading"><div><p className="eyebrow">{active.group} / {active.tag}</p><h2>{active.brand}</h2><p>{active.subtitle}</p></div><div className="demo-device-switch" role="group" aria-label="Preview device"><button type="button" className={device==='phone'?'is-active':''} aria-pressed={device==='phone'} onClick={()=>setDevice('phone')}>▯ Phone</button><button type="button" className={device==='desktop'?'is-active':''} aria-pressed={device==='desktop'} onClick={()=>setDevice('desktop')}>▣ Desktop</button></div></div>
    <LivePreview slug={active.slug} device={device}/>
    <div className="demo-preview-actions"><p>Scroll inside the frame to explore the actual landing page.</p><a className="btn btn-primary" href={'/landing-pages/'+active.slug+'/'}>Open full landing page ↗</a></div>
   </section>
   <section className="demo-picker" aria-label="Choose a landing page"><h2 className="section-title">Choose a concept.</h2><div className="demo-picker-grid">{seasonalDemos.map((d,i)=><button type="button" key={d.slug} className={'demo-picker-card '+(selected===d.slug?'is-selected':'')} onClick={()=>{setSelected(d.slug);document.querySelector('.demo-preview-section')?.scrollIntoView({behavior:'smooth',block:'start'})}} aria-pressed={selected===d.slug}><span className="demo-picker-number">{String(i+1).padStart(2,'0')} / {d.group}</span><img src={d.image} alt={d.brand+' concept cover artwork'} loading="lazy" decoding="async"/><span className="demo-picker-copy"><strong>{d.brand}</strong><span>Preview landing page ↗</span></span></button>)}</div></section>
-  <p className="demo-fiction-note">These six landing pages are original fictional portfolio concepts. No depicted products, offers or tickets are available for purchase.</p>
+  <p className="demo-fiction-note">These landing pages are original fictional portfolio concepts. No depicted products, offers or tickets are available for purchase.</p>
  </div></div>;
 }
