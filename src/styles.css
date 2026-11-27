@@ -12,3 +12,49 @@
 @import './pages/work/templates/templates.css';
 
 @import './shared/styles/studio-refresh.css';
+
+/* Direction A: premium editorial studio. Keep existing routes and components intact. */
+:root {
+  --studio-paper: #f8f6f1;
+  --studio-ink: #19171d;
+  --studio-line: #dedbd4;
+}
+body { background: var(--studio-paper); color: var(--studio-ink); }
+.site-header, body:has(.studio-hero) .site-header {
+  background: #19171df5; border-bottom-color: #ffffff20;
+}
+.wordmark { letter-spacing: -.065em; }
+.section-title { letter-spacing: -.055em; }
+.section-title em { color: #745b79; }
+.eyebrow { color: #66526c; letter-spacing: .2em; }
+.section-heading > p { color: #625d65; }
+.studio-services { padding-block: clamp(64px, 9vw, 128px); }
+.feature-card {
+  background: #fffefa; border: 1px solid var(--studio-line);
+  border-radius: 4px; box-shadow: none;
+  transition: border-color .25s ease, transform .25s ease;
+}
+.feature-card::before { display: none; }
+.feature-card:hover { border-color: #8d7a91; box-shadow: none; transform: translateY(-3px); }
+.studio-ribbon { background: #eeebe5; border-color: var(--studio-line); }
+.studio-ribbon .container { color: #5d535e; }
+.showcase-section { background: #19171d; }
+.work-showcase { background: #242128; border-color: #ffffff26; border-radius: 4px; }
+.studio-link { background: #e5d9e8; border-color: #cbbdce; box-shadow: none; }
+.studio-link:hover { background: #f1e9f2; box-shadow: none; }
+.studio-link-quiet { background: transparent; border-color: currentColor; color: inherit; }
+.studio-link-quiet:hover { background: #ffffff12; color: inherit; }
+.btn-primary { background: #e5d9e8; border-color: #cbbdce; box-shadow: none; color: #211b23; }
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid #94769b; outline-offset: 4px;
+}
+@media (max-width: 700px) {
+  .section-heading { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .section-heading .section-title { font-size: clamp(34px, 10vw, 52px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important;
+  }
+}
