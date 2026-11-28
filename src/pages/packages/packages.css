@@ -11,6 +11,8 @@
 .packages-card li{margin-bottom:10px}
 .packages-pricing{border-top:1px solid var(--border);padding-top:20px;margin-top:auto}
 .packages-pricing strong{font-size:15px;line-height:1.5;display:block;color:#6e2a9f}
+.packages-pricing .packages-price{font-size:28px;line-height:1.2;margin-bottom:6px}
+.packages-cta{width:100%;margin-top:12px}
 .packages-pricing p{font-size:12px;color:var(--muted);line-height:1.6}
 .packages-future,.packages-feedback{margin-top:36px;border-radius:20px;padding:clamp(24px,4vw,42px);background:#fff9ff;border:1px solid var(--border)}
 .packages-future h2,.packages-feedback h2{font-size:clamp(24px,3vw,34px);margin:0 0 12px}
