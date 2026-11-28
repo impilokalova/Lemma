@@ -2,7 +2,6 @@ import {legalPages} from '../../pages/legal/LegalPages';
 import {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import {serviceDetails} from '../navigation/routes';
-import {signatureArtworks} from '../../pages/work/gallery/artworks';
 
 type Metadata = {title:string;description:string;robots?:string};
 const pages:Record<string,Metadata>={
@@ -32,10 +31,8 @@ export function SeoHead(){
  const {pathname}=useLocation();
  useEffect(()=>{
   const path=pathname==='/'?'/':pathname.replace(/\/$/,'');
-  const artwork=path.startsWith('/work/samples/')?signatureArtworks.find(a=>a.slug===path.split('/')[3]):undefined;
-  const artworkMeta=artwork?{title:artwork.title+' | '+artwork.type+' Design Concept | Lemma Studio',description:'Original '+artwork.category.toLowerCase()+' design concept by Lemma Studio. Fictional portfolio artwork.'}:undefined;
   const policy=path.startsWith('/legal/')?legalPages.find(p=>'/legal/'+p.slug===path):undefined;
-  const data=pages[path]??(policy?{title:policy.title+' | Lemma Studio',description:policy.intro,robots:'noindex,follow'}:undefined)??artworkMeta??(path.startsWith('/services/')&&serviceDetails[path.split('/')[2]]?{
+  const data=pages[path]??(policy?{title:policy.title+' | Lemma Studio',description:policy.intro,robots:'noindex,follow'}:undefined)??(path.startsWith('/services/')&&serviceDetails[path.split('/')[2]]?{
    title:serviceDetails[path.split('/')[2]].title+' | Lemma Studio',
    description:serviceDetails[path.split('/')[2]].description
   }:undefined);
