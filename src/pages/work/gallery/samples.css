@@ -1,34 +1,77 @@
-/* Unified Lemma brand system: lavender, cream, shared cards and typography. */
-.lemma-samples{background:var(--light);color:var(--ink)}
+/* Unified Lemma architectural design system: alabaster, obsidian, cobalt & structured cards. */
+.lemma-samples{background:var(--canvas);color:var(--ink)}
+.lemma-samples-toolbar{padding-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.lemma-sample-filters{display:flex;flex-wrap:wrap;gap:6px;padding:4px;background:#F4F4F5;border:1px solid #E4E4E7;border-radius:10px}
+.lemma-sample-filters .lemma-tab-btn{min-height:40px;border-color:transparent;background:transparent;border-radius:6px;color:#52525B}
+@media(max-width:1199px){.lemma-sample-filters .lemma-tab-btn{min-height:44px}}
+.lemma-sample-filters .lemma-tab-btn:hover{color:#09090B}
+.lemma-sample-filters .lemma-tab-btn.is-active{background:#FFFFFF;color:#09090B;border-color:#E4E4E7;box-shadow:0 1px 2px rgba(9,9,11,.08)}
+.lemma-sample-crosslinks{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.lemma-sample-crosslinks a{display:inline-flex;align-items:center;min-height:44px;color:var(--primary);font-size:14px;font-weight:600;text-underline-offset:3px}
 .lemma-samples-lead{max-width:660px;color:var(--muted);line-height:1.6;margin:0 0 24px}
 .lemma-samples-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.lemma-sample-card{min-width:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff9ff}
-.lemma-sample-image{display:block;background:#eee4f4;aspect-ratio:3/4}
+.lemma-sample-card{min-width:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#FFFFFF;box-shadow:0 1px 2px rgba(9,9,11,.04);transition:transform .16s,border-color .16s,box-shadow .16s}
+.lemma-sample-card:hover{transform:translateY(-2px);border-color:var(--border-strong);box-shadow:0 10px 28px rgba(9,9,11,.06)}
+.lemma-sample-image{display:block;background:#F4F4F5;aspect-ratio:3/4}
 .lemma-sample-image img{display:block;width:100%;height:100%;object-fit:contain}
-.lemma-sample-caption{padding:15px}
-.lemma-sample-caption h3{font-size:17px;margin:0 0 6px}
-.lemma-sample-caption p{color:var(--muted);font-size:12px;margin:0 0 12px}
-.lemma-sample-caption a{color:#682c96;font-size:13px;text-underline-offset:3px}
-.lemma-sample-detail{background:var(--light);color:var(--ink);padding:48px 0 72px}
-.lemma-detail-back{display:inline-block;margin-bottom:30px;color:#682c96}
-.lemma-detail-art{max-width:820px;margin:28px 0;padding:14px;background:#fff9ff;border:1px solid var(--border);border-radius:var(--radius)}
+.lemma-sample-caption{padding:16px}
+.lemma-sample-caption h3{font-size:16.5px;font-weight:600;margin:0 0 6px;color:#09090B}
+.lemma-sample-caption p{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+.lemma-sample-caption a{color:var(--primary);font-size:13px;font-weight:600;text-underline-offset:3px}
+
+/* Slides & presentation decks showcase grid */
+.lemma-slide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.lemma-slide-card{min-width:0;padding:24px;border-radius:var(--radius);border:1px solid var(--border);background:#FFFFFF;box-shadow:0 1px 2px rgba(9,9,11,.04);display:flex;flex-direction:column;gap:10px}
+.lemma-slide-tag{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--primary)}
+.lemma-slide-card h3{margin:0;font-size:20px;font-weight:600;line-height:1.25;color:#09090B}
+.lemma-slide-price{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:14px;font-weight:600;color:#09090B}
+.lemma-slide-card p{margin:0;font-size:14px;line-height:1.6;color:var(--muted)}
+.lemma-slide-viewer{margin:6px 0 8px;border-radius:10px;overflow:hidden;border:1px solid #27272A;background:#09090B;color:#FAFAFA}
+.lemma-slide-screen{padding:18px 16px;min-height:142px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.lemma-slide-screen span{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.1em;color:#93C5FD}
+.lemma-slide-screen strong{font-size:15px;line-height:1.35;color:#FAFAFA}
+.lemma-slide-screen p{margin:0;font-size:13px;line-height:1.5;color:#A1A1AA}
+.lemma-slide-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #27272A;background:#141418}
+.lemma-slide-controls button{min-height:44px;border:0;background:transparent;color:#E4E4E7;font-size:13px;font-weight:600;transition:background .15s,color .15s}
+.lemma-slide-controls button:first-child{border-right:1px solid #27272A}
+.lemma-slide-controls button:hover{background:#27272A;color:#FFFFFF}
+.lemma-slide-card a{margin-top:auto;display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:600;color:var(--primary);text-underline-offset:3px}
+
+.lemma-sample-detail{background:var(--canvas);color:var(--ink);padding:48px 0 72px}
+.lemma-detail-back{display:inline-flex;align-items:center;min-height:44px;margin-bottom:22px;color:#09090B;font-weight:600;text-decoration:none}
+.lemma-detail-back:hover{color:var(--primary)}
+.lemma-detail-art{max-width:820px;margin:28px 0;padding:14px;background:#FFFFFF;border:1px solid var(--border);border-radius:var(--radius)}
 .lemma-detail-art img{display:block;width:100%;height:auto}
-.lemma-detail-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.lemma-detail-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .concept-case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.concept-case-card{background:#fff9ff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.concept-case-card{background:#FFFFFF;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .concept-case-card a{display:block;padding:14px;text-decoration:none;color:var(--ink)}
-.concept-case-card img{width:100%;height:340px;object-fit:contain;background:#eee4f4}
+.concept-case-card img{width:100%;height:340px;object-fit:contain;background:#F4F4F5}
 .concept-case-card h2{font-size:20px;margin:14px 0 5px}
 .concept-case-card p{font-size:13px;color:var(--muted);margin:0 0 10px}
-.concept-case-card span{font-size:13px;color:#682c96}
-@media(max-width:1023px){.lemma-samples-grid,.concept-case-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:599px){.lemma-samples-grid,.concept-case-grid{grid-template-columns:1fr}.lemma-sample-image{aspect-ratio:auto}.lemma-sample-image img{height:auto;max-height:520px}.concept-case-card img{height:auto;max-height:500px}.lemma-sample-detail{padding:28px 0 60px}}
+.concept-case-card span{font-size:13px;color:var(--primary);font-weight:600}
+@media(max-width:1023px){
+ .lemma-samples-grid,.concept-case-grid,.lemma-slide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .lemma-sample-caption a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+}
+@media(max-width:767px){
+ .lemma-detail-actions{flex-direction:column;align-items:stretch;gap:12px}
+ .lemma-detail-actions .btn{width:100%}
+ .lemma-sample-filters{width:100%}
+ .lemma-sample-filters .lemma-tab-btn{flex:1 1 auto;text-align:center}
+}
+@media(max-width:599px){
+ .lemma-samples-grid,.concept-case-grid,.lemma-slide-grid{grid-template-columns:1fr}
+ .lemma-sample-image{aspect-ratio:auto}
+ .lemma-sample-image img{height:auto;max-height:520px}
+ .concept-case-card img{height:auto;max-height:500px}
+ .lemma-sample-detail{padding:28px 0 52px}
+}
 
 /* Lemma signature sport-archive preview tiles */
-.lemma-sports-cover{width:100%;height:100%;min-height:280px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;color:#fff9e8;background:radial-gradient(ellipse at 75% 28%,#b16cff77,transparent 50%),linear-gradient(145deg,#1a1227 0%,#08060e 60%,#594020 100%);overflow:hidden;position:relative}.lemma-sports-cover:before{content:'';position:absolute;inset:12%;border:1px solid #f6c44a55;transform:rotate(-14deg);pointer-events:none}.lemma-sports-cover span{font:800 11px Arial,sans-serif;letter-spacing:.25em;color:#e7bb64;z-index:1}.lemma-sports-cover strong{font:900 clamp(38px,4vw,74px)/.87 Impact,'Arial Narrow',sans-serif;letter-spacing:-.025em;text-shadow:0 4px 30px #000;z-index:1}.lemma-sports-cover em{font:800 12px Arial,sans-serif;letter-spacing:.06em;color:#e4c58e;z-index:1;font-style:normal}.lemma-sample-image:has(.lemma-sports-cover){text-decoration:none}@media(max-width:700px){.lemma-sports-cover{padding:18px}.lemma-sports-cover strong{font-size:clamp(34px,10vw,62px)}}
+.lemma-sports-cover{width:100%;height:100%;min-height:280px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;color:#FAFAFA;background:radial-gradient(ellipse at 75% 28%,rgba(37,99,235,.35),transparent 55%),linear-gradient(145deg,#141418 0%,#09090B 65%,#272114 100%);overflow:hidden;position:relative}.lemma-sports-cover:before{content:'';position:absolute;inset:12%;border:1px solid rgba(231,187,100,.28);transform:rotate(-14deg);pointer-events:none}.lemma-sports-cover span{font:700 11px var(--font-mono);letter-spacing:.2em;color:#E7BB64;z-index:1}.lemma-sports-cover strong{font:800 clamp(36px,4vw,68px)/.9 var(--font-display);letter-spacing:-.035em;text-shadow:0 4px 24px rgba(0,0,0,.6);z-index:1}.lemma-sports-cover em{font:700 12px var(--font-mono);letter-spacing:.06em;color:#D4D4D8;z-index:1;font-style:normal}.lemma-sample-image:has(.lemma-sports-cover){text-decoration:none}@media(max-width:700px){.lemma-sports-cover{padding:18px}.lemma-sports-cover strong{font-size:clamp(34px,10vw,58px)}}
 
-/* Responsive artwork viewer: contain the entire poster/menu within the available
-   viewport instead of rendering at its native dimensions. */
+/* Responsive artwork viewer: contain the entire poster/menu within the available viewport */
 .lemma-sample-detail .container{min-width:0}
 .lemma-detail-art{width:min(100%,820px);max-width:100%;min-width:0;margin:24px auto;padding:clamp(8px,1.6vw,14px);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .lemma-detail-art img{display:block;width:auto;max-width:100%;height:auto;max-height:min(75dvh,900px);object-fit:contain;object-position:center;margin-inline:auto}

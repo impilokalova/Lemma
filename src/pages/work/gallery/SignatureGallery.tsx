@@ -1,14 +1,90 @@
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Intro} from '../../../shared/components/Intro';
 import {signatureArtworks} from './artworks';
 
-export function SignatureGallery(){
- return <div className="lemma-samples">
-  <Intro eyebrow="WORK / DESIGN SAMPLES" title="Hospitality &amp; editorial samples." description="Original hospitality menu concepts and interactive sports editorial archives—while our new industry-specific web samples are being built."/>
+type SampleCategory = 'all' | 'menus' | 'infographics' | 'slides';
 
-  <section className="section container">
-   <h2 className="section-title">Hospitality menu concepts</h2>
-   <p className="lemma-samples-lead">Four original restaurant, cafe and hospitality print and digital menu concepts.</p>
+const slideSamples = [
+ {
+  id:'pitch-deck',
+  tag:'PITCH & INVESTOR DECKS',
+  title:'Narrative investor & funding deck',
+  slides:'10–15 slides · from R600',
+  summary:'Problem-solution framing, traction visuals, market sizing tables and clear ask slide structured for fast reading.',
+  frames:[
+   {index:'01 / 03 · COVER & THESIS',headline:'Clear problem, market timing and headline traction.',body:'High-contrast cover lockup paired with a 1-sentence value thesis.'},
+   {index:'02 / 03 · DATA & ECONOMICS',headline:'Tabular cohort metrics & unit-cost clarity.',body:'Scannable metrics strip designed for investors reading on laptops or phones.'},
+   {index:'03 / 03 · ROADMAP & ASK',headline:'Milestones, capital allocation and next steps.',body:'Clean quarter-by-quarter execution roadmap with unambiguous funding ask.'}
+  ]
+ },
+ {
+  id:'company-profile',
+  tag:'COMPANY PROFILES',
+  title:'B2B capability & tender profile',
+  slides:'Full layout · R650',
+  summary:'Credibility-led company deck showcasing core services, compliance credentials, leadership and project timeline.',
+  frames:[
+   {index:'01 / 03 · STUDIO CREDENTIALS',headline:'Company overview, registrations and footprint.',body:'Structured executive summary engineered for procurement and tender packs.'},
+   {index:'02 / 03 · SECTOR CAPABILITIES',headline:'Three-column service matrix & past scope.',body:'Readable service summaries paired with sector delivery highlights.'},
+   {index:'03 / 03 · COMPLIANCE & CONTACT',headline:'Statutory details, leadership and direct line.',body:'Print-ready closing page with clickable links for digital PDF sharing.'}
+  ]
+ },
+ {
+  id:'slide-master',
+  tag:'SLIDE SYSTEMS',
+  title:'Reusable PowerPoint & Keynote master',
+  slides:'Master system · R500',
+  summary:'Locked typographic hierarchy, grid masters, chart styles and cover slides built for internal teams to reuse.',
+  frames:[
+   {index:'01 / 03 · TITLE & DIVIDERS',headline:'Consistent cover and chapter divider masters.',body:'Pre-built grid locks keeping team presentations visually unified.'},
+   {index:'02 / 03 · COMPARISON TABLES',headline:'Aligned pricing, tier and timeline templates.',body:'Tabular numeral grids and clean column rules ready for copy-paste edits.'},
+   {index:'03 / 03 · CHART & CALLOUTS',headline:'Brand-palette charts and stat summary slides.',body:'Coordinated light and dark slide variants preventing messy overrides.'}
+  ]
+ }
+] as const;
+
+const filters: { id: SampleCategory; label: string }[] = [
+ {id:'all',label:'All samples'},
+ {id:'menus',label:'Menus & print'},
+ {id:'infographics',label:'Infographics'},
+ {id:'slides',label:'Slides & decks'}
+];
+
+export function SignatureGallery(){
+ const [filter,setFilter]=useState<SampleCategory>('all');
+ const [slideIndexes,setSlideIndexes]=useState<Record<string,number>>({});
+ const showMenus=filter==='all'||filter==='menus';
+ const showInfographics=filter==='all'||filter==='infographics';
+ const showSlides=filter==='all'||filter==='slides';
+
+ const stepSlide=(id:string,total:number,delta:number)=>{
+  setSlideIndexes(prev=>({...prev,[id]:((prev[id]??0)+delta+total)%total}));
+ };
+
+ return <div className="lemma-samples">
+  <Intro eyebrow="WORK / SAMPLES" title="Menus, infographics &amp; slides." description="Explore Lemma’s visual work by format: print &amp; digital hospitality menus, interactive sports infographics and interactive slide deck samples."/>
+
+  <div className="section container lemma-samples-toolbar">
+   <div className="lemma-sample-filters" role="group" aria-label="Filter design samples by format">
+    {filters.map(item=><button
+     key={item.id}
+     type="button"
+     aria-pressed={filter===item.id}
+     className={'lemma-tab-btn'+(filter===item.id?' is-active':'')}
+     onClick={()=>setFilter(item.id)}>
+     {item.label}
+    </button>)}
+   </div>
+   <div className="lemma-sample-crosslinks">
+    <Link to="/work/demos">Website demos ↗</Link>
+    <Link to="/work/templates">12 landing page templates ↗</Link>
+   </div>
+  </div>
+
+  {showMenus&&<section id="menus" className="section container">
+   <h2 className="section-title">01. Menus &amp; hospitality print</h2>
+   <p className="lemma-samples-lead">Four original restaurant, cafe and dining menu concepts demonstrating editorial layout and typography.</p>
    <div className="lemma-samples-grid">
     {signatureArtworks.map(a=><article className="lemma-sample-card" key={a.slug}>
      <Link to={'/work/samples/'+a.slug} className="lemma-sample-image" aria-label={'View '+a.title}>
@@ -21,11 +97,11 @@ export function SignatureGallery(){
      </div>
     </article>)}
    </div>
-  </section>
+  </section>}
 
-  <section className="section container">
-   <h2 className="section-title">Sports intelligence &amp; editorial infographics</h2>
-   <p className="lemma-samples-lead">Responsive match archives. Historical match data is sourced and dated; visualisations are labelled independent concepts.</p>
+  {showInfographics&&<section id="infographics" className="section container">
+   <h2 className="section-title">02. Infographics &amp; data stories</h2>
+   <p className="lemma-samples-lead">Interactive match archives and structured information design. Historical match figures are sourced and dated; custom infographics start from R200.</p>
    <div className="lemma-samples-grid">
     <article className="lemma-sample-card">
      <a className="lemma-sample-image" href="/sports-archive/mtn8-2014/" aria-label="Open MTN8 2014 interactive infographic">
@@ -34,7 +110,7 @@ export function SignatureGallery(){
      <div className="lemma-sample-caption">
       <h3>2014 MTN8 · The final</h3>
       <p>Interactive sports infographic · Historical data</p>
-      <a href="/sports-archive/mtn8-2014/">Explore the live infographic ↗</a>
+      <a href="/sports-archive/mtn8-2014/">Explore infographic ↗</a>
      </div>
     </article>
     <article className="lemma-sample-card">
@@ -44,29 +120,49 @@ export function SignatureGallery(){
      <div className="lemma-sample-caption">
       <h3>2008 MTN8 · Penalty drama</h3>
       <p>Interactive sports infographic · Historical data</p>
-      <a href="/sports-archive/mtn8-2008/">Explore the live infographic ↗</a>
+      <a href="/sports-archive/mtn8-2008/">Explore infographic ↗</a>
      </div>
     </article>
    </div>
-  </section>
+  </section>}
 
-  <section className="section container">
-   <h2 className="section-title">Industry website concepts</h2>
-   <p className="lemma-samples-lead">Dedicated web design samples for Healthcare, Insurance, Hospitality and Finance are being prepared.</p>
-   <Link className="btn btn-primary" to="/work/templates">View industry roadmap ↗</Link>
-  </section>
-
-  <section className="section container">
-   <h2 className="section-title">Presentation &amp; document design</h2>
-   <p className="lemma-samples-lead">Pitch decks, company profiles, reports and slide templates are available to order through our creative shop.</p>
-   <Link className="btn enquiry-btn-secondary" to="/shop">View presentation pricing ↗</Link>
-  </section>
+  {showSlides&&<section id="slides" className="section container">
+   <h2 className="section-title">03. Slides &amp; presentation decks</h2>
+   <p className="lemma-samples-lead">Step through sample slide layouts for pitch decks, company profiles and reusable master templates.</p>
+   <div className="lemma-slide-grid">
+    {slideSamples.map(item=>{
+     const currentIdx=slideIndexes[item.id]??0;
+     const frame=item.frames[currentIdx];
+     return <article className="lemma-slide-card" key={item.id}>
+      <span className="lemma-slide-tag">{item.tag}</span>
+      <h3>{item.title}</h3>
+      <strong className="lemma-slide-price">{item.slides}</strong>
+      <p>{item.summary}</p>
+      <div className="lemma-slide-viewer" aria-live="polite">
+       <div className="lemma-slide-screen">
+        <span>{frame.index}</span>
+        <strong>{frame.headline}</strong>
+        <p>{frame.body}</p>
+       </div>
+       <div className="lemma-slide-controls">
+        <button type="button" onClick={()=>stepSlide(item.id,item.frames.length,-1)} aria-label={'Previous slide for '+item.title}>← Prev</button>
+        <button type="button" onClick={()=>stepSlide(item.id,item.frames.length,1)} aria-label={'Next slide for '+item.title}>Next →</button>
+       </div>
+      </div>
+      <Link to="/quote">Add slides to quote ↗</Link>
+     </article>;
+    })}
+   </div>
+  </section>}
 
   <section className="section section-tint">
    <div className="container">
-    <h2 className="section-title">Need original design for your brand?</h2>
-    <p>Explore what we can create for your business.</p>
-    <Link className="btn btn-primary" to="/contact">Discuss a project ↗</Link>
+    <h2 className="section-title">Explore website demos &amp; templates</h2>
+    <p>Inspect multi-page business website demos or browse single-page landing templates across 12 industries.</p>
+    <div className="lemma-detail-actions">
+     <Link className="btn btn-primary" to="/work/demos">Open website demos ↗</Link>
+     <Link className="btn enquiry-btn-secondary" to="/work/templates">View 12 landing page templates ↗</Link>
+    </div>
    </div>
   </section>
  </div>;

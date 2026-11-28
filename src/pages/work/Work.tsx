@@ -4,14 +4,17 @@ import {Intro} from '../../shared/components/Intro';
 
 export function Work(){
  return <>
-  <Intro eyebrow="OUR WORK" title="Explore what Lemma can create." description="Discover hospitality design samples, sports editorial infographics and upcoming industry website concepts. Concepts are clearly labelled, never passed off as client commissions."/>
+  <Intro eyebrow="OUR WORK" title="Organized by format." description="Three clear tracks across everything Lemma builds: full multi-page website demos, 12 single-page industry templates, and visual samples spanning menus, infographics and slide decks."/>
   <div className="section container card-grid">
-   <Card title="Concept case studies" description="Original hospitality and editorial design explorations, clearly labelled as concept work." href="/work/projects" tag="Portfolio"/>
-   <Card title="Hospitality &amp; design samples" description="Menu design concepts, sports infographics and links to our presentation design pricing." href="/work/samples" tag="Browse"/>
-   <Card title="Industry web concepts" description="Upcoming web tracks for Healthcare, Insurance, Hospitality and Finance." href="/work/templates" tag="Roadmap"/>
+   <Card title="Website demos" description="Interactive multi-page site prototypes (Home, Services, About, Contact) across Desktop, Tablet and Mobile." href="/work/demos" tag="01 / Multi-page sites"/>
+   <Card title="Landing page templates" description="12 industry-specific single-page website directions with Desktop, Tablet and Mobile layout previews." href="/work/templates" tag="02 / 12 Industries"/>
+   <Card title="Design samples" description="Hospitality menus, interactive sports infographics and multi-slide presentation deck concepts." href="/work/samples" tag="03 / Menus, Infographics & Slides"/>
   </div>
   <section className="section container">
-   <Link className="btn btn-primary" to="/work/templates">View industry web roadmap ↗</Link>
+   <div className="lemma-detail-actions">
+    <Link className="btn btn-primary" to="/work/demos">Launch website demos ↗</Link>
+    <Link className="btn enquiry-btn-secondary" to="/sitemap">View full site map ↗</Link>
+   </div>
   </section>
  </>;
 }
