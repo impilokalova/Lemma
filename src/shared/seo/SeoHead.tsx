@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import {serviceDetails} from '../navigation/routes';
 import {signatureArtworks} from '../../pages/work/gallery/artworks';
+import {getIndustryTrack} from '../../pages/work/templates/industries';
 
 type Metadata = {title:string;description:string;robots?:string};
 const pages:Record<string,Metadata>={
@@ -11,18 +12,19 @@ const pages:Record<string,Metadata>={
  '/services/web':{title:'Small Business Website & Landing Page Design | Lemma Studio',description:'Responsive business websites and custom landing page design with clear navigation, mobile layouts and enquiry pathways.'},
  '/services/creative':{title:'Poster, Flyer & Graphic Design Services | Lemma Studio',description:'Original promotional posters, flyer designs, restaurant menus and campaign graphics for business marketing.'},
  '/services/social':{title:'Social Media Graphic & Content Design | Lemma Studio',description:'Branded social media posts, content graphics and campaign visual design for businesses.'},
- '/work':{title:'Design Portfolio & Industry Concepts | Lemma Studio',description:'Hospitality menu concepts, interactive sports editorial archives and upcoming industry website concepts by Lemma Studio.'},
- '/work/projects':{title:'Design Projects & Case Studies | Lemma Studio',description:'Discover Lemma Studio design concepts and verified client projects as they become available.',robots:'noindex,follow'},
- '/work/samples':{title:'Hospitality & Design Samples | Lemma Studio',description:'Original hospitality menu design concepts and historical sports editorial infographic samples.'},
- '/work/templates':{title:'Industry Web Concepts | Lemma Studio',description:'Upcoming web design concepts across Healthcare, Insurance, Hospitality and Finance.'},
- '/work/landing-pages':{title:'Industry Web Concepts | Lemma Studio',description:'Upcoming web design concepts across Healthcare, Insurance, Hospitality and Finance.',robots:'noindex,follow'},
- '/work/demos':{title:'Website Demos Coming Soon | Lemma Studio',description:'Industry-specific website demonstrations by Lemma Studio are coming soon.',robots:'noindex,follow'},
+ '/work':{title:'Work: Samples, Templates & Demos | Lemma Studio',description:'Explore Lemma Studio design samples across menus, infographics and slides alongside 12 industry landing page templates and website demos.'},
+ '/work/projects':{title:'Design Samples | Lemma Studio',description:'Hospitality menus, interactive sports infographics and presentation slide concepts by Lemma Studio.',robots:'noindex,follow'},
+ '/work/samples':{title:'Menus, Infographics & Slide Samples | Lemma Studio',description:'Browse print and digital hospitality menus, interactive sports infographics and structured presentation slide systems.'},
+ '/work/templates':{title:'Industry Landing Page Templates | Lemma Studio',description:'Explore 12 industry-specific landing page templates with desktop, tablet and mobile views.'},
+ '/work/landing-pages':{title:'Industry Landing Page Templates | Lemma Studio',description:'Explore 12 industry-specific landing page templates with desktop, tablet and mobile views.',robots:'noindex,follow'},
+ '/work/demos':{title:'Interactive Website Demos | Lemma Studio',description:'Test desktop, tablet and mobile website demo previews across featured industries.'},
  '/packages':{title:'Web Design & Graphic Design Packages | Lemma Studio',description:'Discover starting points for business websites, promotional graphic design and ongoing social media content design.'},
  '/shop':{title:'Creative Shop & Priced Design Services | Lemma Studio',description:'Browse priced graphic design, website, presentation and branding services from Lemma Studio and build a custom project bag.'},
  '/bag':{title:'Your Creative Bag | Lemma Studio',description:'Review your selected creative services and send an itemised project enquiry to Lemma Studio.',robots:'noindex,follow'},
  '/quote':{title:'Build a Quote | Lemma Studio',description:'Build an itemised ZAR quotation for graphic design, websites, presentations and branding.',robots:'noindex,follow'},
  '/about':{title:'About Lemma Studio | Creative Design South Africa',description:'Learn about Lemma Studio and our focus on responsive websites, original graphic design and social media visuals.'},
  '/legal':{title:'Policies & Legal Information | Lemma Studio',description:'Read Lemma Studio privacy, POPIA, refund, service and access to information policies.'},
+ '/sitemap':{title:'Site Map | Lemma Studio',description:'Complete structured directory of Lemma Studio pages: services, website demos, landing page templates, samples and pricing.'},
  '/contact':{title:'Contact Lemma Studio | Web & Graphic Design',description:'Discuss a business website, landing page, promotional flyer or social media design project with Lemma Studio.'}
 };
 
@@ -38,15 +40,17 @@ const segmentLabels:Record<string,string>={
  creative:'Graphic design',
  social:'Social media design',
  work:'Work',
+ demos:'Website demos',
  samples:'Samples',
  templates:'Landing page templates',
  projects:'Projects',
  packages:'Packages',
- shop:'Shop',
- bag:'Bag',
- quote:'Build a quote',
+ shop:'Service price list',
+ bag:'Quote builder',
+ quote:'Quote builder',
  about:'About',
  contact:'Contact',
+ sitemap:'Site map',
  legal:'Policies'
 };
 
@@ -55,9 +59,11 @@ export function SeoHead(){
  useEffect(()=>{
   const path=pathname==='/'?'/':pathname.replace(/\/$/,'');
   const artwork=path.startsWith('/work/samples/')?signatureArtworks.find(a=>a.slug===path.split('/')[3]):undefined;
+  const industry=path.startsWith('/work/templates/')?getIndustryTrack(path.split('/')[3]):undefined;
   const artworkMeta=artwork?{title:artwork.title+' | '+artwork.type+' Design Concept | Lemma Studio',description:'Original '+artwork.category.toLowerCase()+' design concept by Lemma Studio. Fictional portfolio artwork.'}:undefined;
+  const industryMeta=industry?{title:industry.title+' Website Concepts | Lemma Studio',description:industry.summary}:undefined;
   const policy=path.startsWith('/legal/')?legalPages.find(p=>'/legal/'+p.slug===path):undefined;
-  const data=pages[path]??(policy?{title:policy.title+' | Lemma Studio',description:policy.intro,robots:'noindex,follow'}:undefined)??artworkMeta??(path.startsWith('/services/')&&serviceDetails[path.split('/')[2]]?{
+  const data=pages[path]??(policy?{title:policy.title+' | Lemma Studio',description:policy.intro,robots:'noindex,follow'}:undefined)??artworkMeta??industryMeta??(path.startsWith('/services/')&&serviceDetails[path.split('/')[2]]?{
    title:serviceDetails[path.split('/')[2]].title+' | Lemma Studio',
    description:serviceDetails[path.split('/')[2]].description
   }:undefined);
@@ -94,7 +100,7 @@ export function SeoHead(){
     ...parts.map((part,index)=>({
      '@type':'ListItem',
      position:index+2,
-     name:index===parts.length-1&&artwork?artwork.title:segmentLabels[part]||part.replace(/-/g,' '),
+     name:index===parts.length-1&&artwork?artwork.title:index===parts.length-1&&industry?industry.title:segmentLabels[part]||part.replace(/-/g,' '),
      item:origin+'/'+parts.slice(0,index+1).join('/')
     }))
    ];

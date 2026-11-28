@@ -5,7 +5,7 @@ import {SeoHead} from './shared/seo/SeoHead';
 import {Analytics} from './shared/analytics/Analytics';
 import {ContentProtection} from './shared/components/ContentProtection';
 import {useEffect} from 'react';
-import {Navigate,Route,Routes,useLocation,useParams} from 'react-router-dom';
+import {Navigate,Route,Routes,useLocation} from 'react-router-dom';
 import {Header} from './shared/components/Header';
 import {Footer} from './shared/components/Footer';
 import {Home} from './pages/home/Home';
@@ -13,20 +13,15 @@ import {Services} from './pages/services/Services';
 import {ServiceDetail} from './pages/services/ServiceDetail';
 import {Work} from './pages/work/Work';
 import {Templates} from './pages/work/templates/Templates';
+import {IndustryTemplateDetail} from './pages/work/templates/IndustryTemplateDetail';
 import {Samples} from './pages/work/samples/Samples';
 import {SampleDetail} from './pages/work/samples/SampleDetail';
-import {WorkIndex} from './pages/work/WorkIndex';
 import {WebsiteDemosComingSoon} from './pages/work/demos/WebsiteDemosComingSoon';
 import {Packages} from './pages/packages/Packages';
 import {About} from './pages/about/About';
 import {Contact} from './pages/contact/Contact';
+import {SitemapPage} from './pages/sitemap/SitemapPage';
 import {NotFound} from './pages/not-found/NotFound';
-import {signatureArtworks} from './pages/work/gallery/artworks';
-
-function OldSampleRedirect(){
- const {slug}=useParams();
- return <Navigate to={signatureArtworks.some(a=>a.slug===slug)?'/work/samples/'+slug:'/work/templates'} replace/>;
-}
 
 export function App(){
  const location=useLocation();
@@ -50,9 +45,9 @@ export function App(){
     <Route path="/work/samples" element={<Samples/>}/>
     <Route path="/work/samples/:slug" element={<SampleDetail/>}/>
     <Route path="/work/templates" element={<Templates/>}/>
-    <Route path="/work/templates/:slug" element={<OldSampleRedirect/>}/>
-    <Route path="/work/projects" element={<WorkIndex/>}/>
-    <Route path="/work/projects/:slug" element={<Navigate to="/work/projects" replace/>}/>
+    <Route path="/work/templates/:slug" element={<IndustryTemplateDetail/>}/>
+    <Route path="/work/projects" element={<Navigate to="/work/samples" replace/>}/>
+    <Route path="/work/projects/:slug" element={<Navigate to="/work/samples" replace/>}/>
     <Route path="/work/landing-pages" element={<Navigate to="/work/templates" replace/>}/>
     <Route path="/work/landing-pages/:slug" element={<Navigate to="/work/templates" replace/>}/>
     <Route path="/work/demos" element={<WebsiteDemosComingSoon/>}/>
@@ -60,6 +55,7 @@ export function App(){
     <Route path="/packages" element={<Packages/>}/>
     <Route path="/about" element={<About/>}/>
     <Route path="/contact" element={<Contact/>}/>
+    <Route path="/sitemap" element={<SitemapPage/>}/>
     <Route path="/legal" element={<LegalIndex/>}/>
     <Route path="/legal/:slug" element={<LegalPage/>}/>
     <Route path="*" element={<NotFound/>}/>
