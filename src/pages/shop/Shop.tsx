@@ -7,7 +7,7 @@ export function Shop(){
  const [category,setCategory]=useState('all'),[query,setQuery]=useState('');
  const navigate=useNavigate();
  const products=useMemo(()=>SERVICES.filter(s=>(category==='all'||s.category===category)&&s.name.toLowerCase().includes(query.trim().toLowerCase())),[category,query]);
- const add=(id:string)=>{addToDraft(id);navigate('/bag')};
+ const add=(id:string)=>{addToDraft(id);navigate('/quote')};
 
  return <div className="section container shop-page">
   <p className="eyebrow">LEMMA STUDIO · CREATIVE SHOP</p>
@@ -31,6 +31,6 @@ export function Shop(){
   </div>
 
   {products.length===0&&<p className="empty-state">No matching services. Try another search or category.</p>}
-  <p className="shop-footer-cta"><Link className="btn btn-primary" to="/bag">View bag &amp; send enquiry ↗</Link></p>
+  <p className="shop-footer-cta"><Link className="btn btn-primary" to="/quote">Review quote &amp; send enquiry ↗</Link></p>
  </div>;
 }

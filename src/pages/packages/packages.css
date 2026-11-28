@@ -1,23 +1,24 @@
-.packages-page{background:var(--light);color:var(--ink);padding-bottom:80px}
-.packages-notice{display:flex;align-items:center;gap:18px;padding:18px 22px;border-radius:16px;background:#e8d8f7;border:1px solid #c7a5e8;margin:0 0 30px;line-height:1.5}
-.packages-notice strong{white-space:nowrap;color:#572083}.packages-notice span{color:#43334e;font-size:14px}
+.packages-page{background:var(--canvas);color:var(--ink);padding-bottom:80px}
+.packages-notice{display:flex;align-items:center;gap:18px;padding:18px 22px;border-radius:12px;background:#F4F4F5;border:1px solid #E4E4E7;margin:0 0 30px;line-height:1.5}
+.packages-notice strong{white-space:nowrap;color:#09090B}.packages-notice span{color:#52525B;font-size:14px}
 .packages-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.packages-card{min-width:0;background:#fff9ff;border:1px solid var(--border);border-radius:20px;padding:clamp(20px,2.5vw,32px);display:flex;flex-direction:column}
-.packages-status{align-self:flex-start;background:#e9d2ff;color:#56218b;padding:7px 12px;border-radius:100px;font-size:12px;font-weight:700}
-.packages-card h2{font-size:clamp(23px,2.5vw,32px);line-height:1.15;margin:22px 0 12px;overflow-wrap:anywhere}
-.packages-summary{font-size:15px;line-height:1.6;color:var(--muted);margin:0 0 24px}
-.packages-card h3{font-size:14px;margin:0 0 12px}
-.packages-card ul{padding-left:20px;margin:0 0 24px;line-height:1.55;font-size:14px}
-.packages-card li{margin-bottom:10px}
+.packages-card{min-width:0;background:#FFFFFF;border:1px solid var(--border);border-radius:12px;padding:clamp(20px,2.5vw,32px);display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(9,9,11,.04)}
+.packages-status{align-self:flex-start;color:var(--primary);font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.packages-card h2{font-size:clamp(22px,2.4vw,30px);line-height:1.18;margin:12px 0 10px;overflow-wrap:anywhere;color:#09090B}
+.packages-summary{font-size:15px;line-height:1.6;color:var(--muted);margin:0 0 22px}
+.packages-card h3{font-size:14px;margin:0 0 12px;color:#09090B}
+.packages-card ul{padding-left:20px;margin:0 0 24px;line-height:1.6;font-size:14px;color:#3F3F46}
+.packages-card li{margin-bottom:8px}
 .packages-pricing{border-top:1px solid var(--border);padding-top:20px;margin-top:auto}
-.packages-pricing strong{font-size:15px;line-height:1.5;display:block;color:#6e2a9f}
-.packages-pricing .packages-price{font-size:28px;line-height:1.2;margin-bottom:6px}
+.packages-pricing strong{font-size:15px;line-height:1.5;display:block;color:#09090B}
+.packages-pricing .packages-price{font-family:var(--font-display);font-variant-numeric:tabular-nums;font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px;color:#09090B}
 .packages-cta{width:100%;margin-top:12px}
-.packages-pricing p{font-size:12px;color:var(--muted);line-height:1.6}
-.packages-future,.packages-feedback{margin-top:36px;border-radius:20px;padding:clamp(24px,4vw,42px);background:#fff9ff;border:1px solid var(--border)}
-.packages-future h2,.packages-feedback h2{font-size:clamp(24px,3vw,34px);margin:0 0 12px}
-.packages-future p,.packages-feedback p{max-width:700px;line-height:1.6;color:var(--muted)}
+.packages-pricing p{font-size:12.5px;color:var(--muted);line-height:1.6}
+.packages-future,.packages-feedback{margin-top:28px;border-radius:12px;padding:clamp(24px,4vw,40px);background:#FFFFFF;border:1px solid var(--border);box-shadow:0 1px 3px rgba(9,9,11,.04)}
+.packages-future h2,.packages-feedback h2{font-size:clamp(22px,2.8vw,32px);margin:0 0 12px;color:#09090B}
+.packages-future p,.packages-feedback p{max-width:700px;line-height:1.65;color:var(--muted)}
 .packages-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
 .packages-disclaimer{font-size:12px}
 @media(max-width:1023px){.packages-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.packages-card:last-child{grid-column:1/-1}}
+@media(max-width:767px){.packages-page{padding-bottom:52px}.packages-future,.packages-feedback{margin-top:24px}}
 @media(max-width:599px){.packages-grid{grid-template-columns:1fr}.packages-card:last-child{grid-column:auto}.packages-notice{align-items:flex-start;flex-direction:column;gap:8px}.packages-actions .btn{width:100%;text-align:center}}
