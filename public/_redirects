@@ -1,2 +1,8 @@
-/work/templates/:slug /work/samples 301
-/work/samples/:slug /work/samples 301
+/work/samples/ /work/samples 301
+/work/templates/menu-fire /work/samples/menu-fire 301
+/work/templates/menu-coffee /work/samples/menu-coffee 301
+/work/templates/menu-garden /work/samples/menu-garden 301
+/work/templates/menu-ocean /work/samples/menu-ocean 301
+/work/demos/ /work/demos 301
+/work/templates/ /work/templates 301
+/work/projects/ /work/projects 301

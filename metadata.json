@@ -1,0 +1,6 @@
+{
+  "name": "Lemma Studio",
+  "description": "Lemma Studio creates distinctive websites, graphic design and social creative for ambitious businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

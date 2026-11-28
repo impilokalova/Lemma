@@ -8,7 +8,6 @@
  *   VITE_LEMMA_TELEGRAM_USERNAME=yourhandle  (no @)
  *
  * WhatsApp is enabled by default. Telegram stays disabled until configured.
- * /settings/contact lets the owner test values in THEIR browser only.
  */
 export const CONTACT_CONFIG: { whatsappNumber: string | null; telegramUsername: string | null } = {
   whatsappNumber: cleanDigits(import.meta.env['VITE_LEMMA_WHATSAPP_NUMBER']) || '27794750556',

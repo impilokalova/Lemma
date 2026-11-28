@@ -1,1 +1,9 @@
-.lemma-template-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.lemma-template-card{min-width:0;background:#fff9ff;border:1px solid #ddcbe6;border-radius:18px;overflow:hidden}.lemma-template-card a{display:block;color:inherit;text-decoration:none}.lemma-template-card img{display:block;width:100%;height:250px;object-fit:contain;background:#eee4f4}.lemma-template-card a>div{padding:18px}.lemma-template-card h2{font-size:23px;margin:10px 0}.lemma-template-card p{line-height:1.5;color:#66596d}.lemma-template-card strong{color:#7435a1}@media(max-width:900px){.lemma-template-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:599px){.lemma-template-grid{grid-template-columns:1fr}}
+.lemma-template-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.lemma-template-card{min-width:0;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(248,242,255,.94));border:1px solid #ddcbe6;border-radius:18px;overflow:hidden;box-shadow:inset 0 1.5px 1px #fff,0 14px 36px rgba(59,32,90,.06)}
+.lemma-industry-card>div{padding:28px;display:flex;flex-direction:column;height:100%}
+.lemma-industry-card span{font-size:11px;font-weight:700;letter-spacing:.14em;color:#78528d}
+.lemma-template-card h2{font-size:25px;margin:14px 0 10px}
+.lemma-template-card p{line-height:1.65;color:#66596d;margin:0 0 22px}
+.lemma-industry-card a{margin-top:auto;text-decoration:none;color:#7435a1}
+.lemma-template-card strong{color:#7435a1;font-size:13px}
+@media(max-width:699px){.lemma-template-grid{grid-template-columns:1fr}}
