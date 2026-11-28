@@ -1,5 +1,7 @@
 # Lemma Studio — navigation-first foundation
 
+**Live website:** https://lemma.impilokalovaa.workers.dev/
+
 Six primary pages: Home, Services, Work, Packages, About, Contact. Templates, posters, flyers and live website demos live under **Work**. No client work or Canva designs are invented; add approved samples to `src/routes.ts` and media assets when supplied.
 
 ## Run
