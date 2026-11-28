@@ -1,7 +1,7 @@
 name: Check
 on:
   push:
-    branches: [main, feat/navigation-foundation-ultraviolet]
+    branches: [main, feat/navigation-foundation-ultraviolet, feat/hybrid-agency-redesign]
   pull_request:
 jobs:
   build-and-test:
