@@ -6,7 +6,7 @@ import {WorkShowcase} from './WorkShowcase';
 
 export function Home(){return <>
  <PlanetHero/>
- <div className="studio-ribbon" aria-label="Creative, web and social design"><div className="container"><span>CREATIVE THINKING</span><span aria-hidden="true">✳</span><span>DIGITAL CRAFT</span><span aria-hidden="true">✳</span><span>BUILT AROUND YOU</span></div></div>
+ <div className="studio-ribbon" aria-label="Creative, web and social design"><div className="studio-ribbon-track">{[0,1,2,3].map(copy=><div key={copy} className="studio-ribbon-group" aria-hidden={copy>0||undefined}><span>CREATIVE THINKING</span><span aria-hidden="true">✳</span><span>DIGITAL CRAFT</span><span aria-hidden="true">✳</span><span>BUILT AROUND YOU</span><span aria-hidden="true">✳</span></div>)}</div></div>
  <section className="section container studio-services" aria-labelledby="services-title">
   <div className="section-heading"><div><p className="eyebrow">01 / WHAT WE DO</p><h2 id="services-title" className="section-title">Good design.<br/><em>Real purpose.</em></h2></div><p>For the businesses finding their voice.<br/>The creators building something new.<br/>And the ideas ready for their next step.</p></div>
   <div className="card-grid">{Object.entries(serviceDetails).map(([slug,v],index)=><Card key={slug} title={v.title} description={v.description} tag={'0'+(index+1)+' / '+slug} href={'/services/'+slug}/>)}</div>
